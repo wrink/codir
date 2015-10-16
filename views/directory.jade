@@ -1,0 +1,56 @@
+doctype html
+html
+	head
+		title= dir
+
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+		meta(name='directory', id='directory', content=dir)
+
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='style.css')
+
+		script(src='socket.io/socket.io.js')
+		script(src='http://code.jquery.com/jquery-1.11.1.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.js', type='text/javascript')
+		script(src='directoryScript.js')
+
+	body
+		.container-fluid
+			.panel.panel-default.col-md-8.full-height
+				.panel-body.full-height
+					.center-frame
+						each value in contents
+							if value.isDir
+								.dir.icons.col-sm-3(draggable='true', ondrag='drag(event);', ondragover='dragOverDir(event);', ondragleave='dragLeave(event);', ondrop='dropDir(event);')
+									.icon.col-sm-12.glyphicon.glyphicon-folder-close(id=value.name, onclick='openDir(event);')
+									.col-sm-12.tag= value.name
+							if value.isFile
+								.file.icons.col-sm-3(draggable='true', ondrag='drag(event);')
+									.icon.col-sm-12.glyphicon.glyphicon-file(id=value.name, onclick='openFile(event);')
+									.col-sm-12.tag= value.name
+							if value.isNew
+								.icons.col-sm-3(data-toggle='modal', data-target='#new-file-modal')
+									.icon.col-sm-12.glyphicon.glyphicon-plus(id=value.name)
+									.col-sm-12.tag= value.name
+							if value.isBack
+								.icons.col-sm-3(ondragover='dragOver(event);', ondrop='dropBack(event);')
+									.icon.col-sm-12.glyphicon.glyphicon-chevron-left(id=value.name, onclick='openBack(event);')
+									.col-sm-12.tag= value.name
+							if value.isTrash
+								.icons.col-sm-3(ondragover='dragOver(event);', ondrop='dropTrash(event);')
+									.icon.col-sm-12.glyphicon.glyphicon-trash(id=value.name)
+									.col-sm-12.tag= value.name
+		.modal.fade#new-file-modal(role='dialog')
+			.modal-dialog
+				.modal-content
+					.modal-header
+						button(type='button', class='close', data-dismiss='modal', aria-label='button')
+							span(aria-hidden='true') &times;
+						h4(class='modal-title') New File
+						.hidden.alert.alert-danger.alert-dismissable(role='alert', id='already-exists')
+							p I'm sorry, there's already a file with that name
+					.modal-body
+						.input-group
+							span(class='input-group-addon') ./
+							input(type='text', class='form-control', placeholder='file.txt or folder', id='new-file')

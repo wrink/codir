@@ -1,0 +1,20 @@
+doctype html
+html
+	head
+		title= dir
+
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='directory', id='directory', content=dir)
+
+		link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+		link(rel='stylesheet', type='text/css', href='style.css')
+
+		script(src='socket.io/socket.io.js')
+		script(src='http://code.jquery.com/jquery-1.11.1.js')
+		script(src="/ace-builds/src-noconflict/ace.js", type="text/javascript", charset="utf-8")
+		script(src='editorScript.js')
+	body
+		.container-fluid
+			.panel.panel-default.col-md-8.full-height
+				#editor.full-height.full-width.col-md-12
