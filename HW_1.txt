@@ -1,0 +1,60 @@
+David Wikler
+
+	Collaboration on software projects has never been easy. Just because you have two people in the same room working on the same mass project doesn’t mean they are collaborating optimally. No matter how hard you try, getting two coders to work on the same file is a hassle, and while there are products and services out there to make that part a little easier, none of them both allow a user work in the code editor of their choice and keep their work private at the same time. The Codir project is intended to link coders, developers and software engineers together into one cohesive unit and make collaboration quick, comfortable and secure.
+
+Who uses Codir?
+Computer Science Students are the fastest-growing population on college campuses. As more and more classes focus on maximizing student collaboration for team projects, codir steps in to make collaboration easier than ever for students who in all likelihood will be working on only a small number of files. In addition, not only will codir run on any computer, it’s also the cheapest product on the market: absolutely free.
+Startups are everywhere these days and in order to hit the ground running a tool is needed to make sure each link in the coder chain is every bit as fast as the last. Codir is there to make sure there are no bottlenecks in the development process.
+Established Enterprises have a use for Codir too. Not only does Codir offer live-collaboration to any file in a project, it is also guaranteed to offer more security and independence than any other product because the security it relies on is entirely your own.
+Everyone Else might not have a use for a software-sharing tool, but codir is more than just that. It’s also lets users share a folder that runs live on their computer.
+
+Install instructions:
+Server Users:
+Make sure that Node.js is installed on your computer. If it is not, consult nodejs.org for installation instructions
+Download codiServer and run the executable setup script to install codir
+Editor Users:
+Make sure that Node.js is installed on your computer. If it is not, consult nodejs.org for installation instructions
+Download the version of codir provided for your choice of text editor
+Consult the personal website of your code editor for instructions on how to install a plugin.
+Follow provided instructions.
+
+Run Instructions:
+Server Users:
+Open the command line or terminal and enter “codir run <filepath>” minus the quotes and press enter/return, where <filepath> is replaced with the path name of the file or folder you want to share.
+To pick a specific port to share from, enter “codir run <filepath> -p <port>” minus the quotes and press enter/return, where <filepath> is replaced with the path name of the file or folder you want to share and <port> is replaced with the port number.
+When you press enter/return, you will be presented with a “Share ID”. Keep track of this number, as it is needed in order to access the folder
+As long as this process is running, your project is shared from your computer. To avoid accidentally quitting this process, enter either “codir run <filepath> &” or    “codir run <filepath> -p <port> &” minus the quotes and press enter/return to run the process in the background.
+Sublime Text Users:
+Make sure the file or folder you want to share is available in the sidebar. If not, open the file from the menu with “Project > Add Folder To Project…”
+Right-click the folder or file in the side bar and select “Share” or “Share To…” in the resulting menu
+If you selected “Share To…” enter the port number you want to share to in the user-entry menu that pops up and press return/enter
+This code is run in the background, and as a result will continue to run when the editor is closed.
+
+Connect Instructions:
+Sublime Text Users:
+From the menu bar select “Tools > Connect…”
+Enter the provided ShareID in the user-entry menu that pops up and press return/enter
+Open any file you wish from the side bar and begin your work.
+
+Add Folder Instructions:
+Server Users:
+Open the command line or terminal and enter “codir add <filepath> <shareid>” minus the quotes and press enter/return, where <shareid> is replaced with the ShareID you want to add the folder to and <filepath> is replaced with the path name of the file or folder you want to share.
+Alternatively, simply add the folder to a folder that is already shared
+Client Users:
+Make sure you have a folder that is currently being live-streamed from your project, and then move or copy your folder to the live folder
+Sublime Text Users:
+Make sure the file or folder you want to share is available in the sidebar. If not, open the file from the menu with “Project > Add Folder to Project…”
+Right-click the folder or file in the side bar and select “Add Folder To…” in the resulting menu
+Enter the ShareID of the project you want to add your folder to and return/enter.
+
+Remove Folder Instructions:
+Server Users:
+Open the command line or terminal and enter “codir remove <filepath> <shareid>” minus the quotes and press enter/return, where <shareid> is replaced with the ShareID you want to remove the folder from and <filepath> is replaced with the path name of the file or folder you want to stop sharing.
+Sublime Text Users:
+Right-click the folder or file in the side bar and select “Remove Folder Fro,…” in the resulting menu
+Enter the ShareID of the project you want to remove your folder from and return/enter.
+Functional Requirements:
+	Codir must first and foremost make it possible to share folders and files between users in all manners previously alluded to. In addition, Codir must be able to share from a remote address and securely hash IP-Port combinations. File sharing must allow for real-time editing of text files, with changes made appearing visibly inside of the text editor.
+
+Non Functional Requirements:
+	Codir must make the user aware of all presently highlighted regions in the workspace, including both their own and those possessed by all users currently editing the same file.

@@ -1,0 +1,991 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ex",
+				"except"
+			],
+			[
+				"zi",
+				"zipf"
+			],
+			[
+				"pr",
+				"project"
+			],
+			[
+				"c",
+				"command"
+			],
+			[
+				"z",
+				"zip"
+			],
+			[
+				"f",
+				"for	For Loop"
+			],
+			[
+				"r",
+				"root"
+			],
+			[
+				"pro",
+				"project"
+			],
+			[
+				"o",
+				"open"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"err",
+				"error_message"
+			],
+			[
+				"is",
+				"isValidId"
+			],
+			[
+				"su",
+				"sublime"
+			],
+			[
+				"s",
+				"substr"
+			],
+			[
+				"p",
+				"portAndHost"
+			],
+			[
+				"send",
+				"sendZip"
+			],
+			[
+				"zp",
+				"zipf"
+			],
+			[
+				"zipf",
+				"zipf"
+			],
+			[
+				"se",
+				"self"
+			],
+			[
+				"T",
+				"True"
+			],
+			[
+				"cl",
+				"close"
+			],
+			[
+				"file",
+				"file2"
+			],
+			[
+				"fil",
+				"file"
+			],
+			[
+				"C",
+				"CodirServerClientThread"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"A",
+				"addr"
+			],
+			[
+				"H",
+				"HOST"
+			],
+			[
+				"nu",
+				"num"
+			],
+			[
+				"tre",
+				"TRUE"
+			],
+			[
+				"wh",
+				"while"
+			],
+			[
+				"Cus",
+				"CUSTOMERS"
+			],
+			[
+				"a",
+				"available"
+			],
+			[
+				"ran",
+				"random"
+			],
+			[
+				"ra",
+				"rand"
+			],
+			[
+				"n",
+				"num"
+			],
+			[
+				"m",
+				"maximum"
+			],
+			[
+				"ne",
+				"need"
+			],
+			[
+				"si",
+				"sizeof"
+			],
+			[
+				"ma",
+				"malloc"
+			],
+			[
+				"cu",
+				"cusNo"
+			],
+			[
+				"cus",
+				"cusNo"
+			],
+			[
+				"num",
+				"num"
+			],
+			[
+				"req",
+				"req"
+			],
+			[
+				"new",
+				"newReq"
+			],
+			[
+				"if",
+				"isSafe"
+			],
+			[
+				"all",
+				"allocated"
+			],
+			[
+				"av",
+				"available"
+			],
+			[
+				"i",
+				"if	If Condition"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"ar",
+				"arg"
+			],
+			[
+				"in",
+				"int"
+			],
+			[
+				"bo",
+				"border-box"
+			],
+			[
+				"ace",
+				"ace_selection"
+			],
+			[
+				"ac",
+				"ace_selection"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"ge",
+				"getSession"
+			],
+			[
+				"chan",
+				"change-select-update"
+			],
+			[
+				"get",
+				"getDirectory"
+			],
+			[
+				"New",
+				"new-page-update"
+			],
+			[
+				"Ne",
+				"NewPageUpdate"
+			],
+			[
+				"e",
+				"editor"
+			],
+			[
+				"io",
+				"ioFileConnection"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"g",
+				"getDirectory"
+			],
+			[
+				"ke",
+				"keyEvent"
+			],
+			[
+				"ed",
+				"editor"
+			],
+			[
+				"fu",
+				"full-width"
+			],
+			[
+				"car",
+				"caret"
+			],
+			[
+				"key",
+				"keyCode"
+			],
+			[
+				"sta",
+				"startToEnd"
+			],
+			[
+				"ca",
+				"caret"
+			],
+			[
+				"endC",
+				"endContainer"
+			],
+			[
+				"en",
+				"end"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"endc",
+				"endContainer"
+			],
+			[
+				"care",
+				"carets"
+			],
+			[
+				"doc",
+				"document"
+			],
+			[
+				"no",
+				"nodes"
+			],
+			[
+				"RG",
+				"rgba()"
+			],
+			[
+				"fi",
+				"firstChild"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"on",
+				"onclick"
+			],
+			[
+				"di",
+				"directory"
+			],
+			[
+				"d",
+				"directory"
+			],
+			[
+				"file-up",
+				"new-file-update"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"mod",
+				"modal"
+			],
+			[
+				"modal",
+				"modal-header"
+			],
+			[
+				"pane",
+				"panel-body"
+			],
+			[
+				"fo",
+				"for	for (…) {…}"
+			],
+			[
+				"dir",
+				"directory"
+			],
+			[
+				"u",
+				"update"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"do",
+				"document"
+			],
+			[
+				"win",
+				"window"
+			],
+			[
+				"st",
+				"startCounter"
+			],
+			[
+				"l",
+				"log"
+			],
+			[
+				"node",
+				"nodeSet"
+			],
+			[
+				"ch",
+				"childNodes"
+			],
+			[
+				"set",
+				"setCaret"
+			],
+			[
+				"sa",
+				"saveSelection"
+			],
+			[
+				"va",
+				"var"
+			],
+			[
+				"to",
+				"toString"
+			],
+			[
+				"k",
+				"keyCode"
+			],
+			[
+				"pre",
+				"prevent"
+			],
+			[
+				"end",
+				"end"
+			],
+			[
+				"strc",
+				"strcmp"
+			],
+			[
+				"hi",
+				"history"
+			],
+			[
+				"his",
+				"history"
+			],
+			[
+				"Hi",
+				"HISTORY_SIZE"
+			],
+			[
+				"h",
+				"history"
+			],
+			[
+				"Ma",
+				"MAX_LINE"
+			],
+			[
+				"MA",
+				"MAX_LINE"
+			],
+			[
+				"pri",
+				"priority"
+			],
+			[
+				"siz",
+				"size"
+			],
+			[
+				"lef",
+				"left"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"left",
+				"leftOfParent"
+			],
+			[
+				"tr",
+				"tree"
+			],
+			[
+				"list",
+				"list1"
+			],
+			[
+				"prin",
+				"printf	printf …"
+			],
+			[
+				"P",
+				"Priority"
+			],
+			[
+				"inc",
+				"inc	#include \"…\""
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"prio",
+				"priorityLG"
+			],
+			[
+				"t",
+				"tree"
+			],
+			[
+				"boder-c",
+				"border-color"
+			],
+			[
+				"border-co",
+				"border-color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "codir.py",
+			"settings":
+			{
+				"buffer_size": 2175,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "codirClient.py",
+			"settings":
+			{
+				"buffer_size": 2559,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "codir.sublime-project",
+			"settings":
+			{
+				"buffer_size": 121,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "codir.sublime-workspace",
+			"settings":
+			{
+				"buffer_size": 12492,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 275.0,
+		"selected_items":
+		[
+			[
+				"save",
+				"File: Save All"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"ta",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"",
+				"Convert Case: Upper Case"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 457.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/david/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codir.sublime-workspace",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codir.sublime-project",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/example.py",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codirClient",
+		"/Users/david/Desktop/fileTest.py",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/test.py",
+		"/Users/david/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/david/Desktop/hw2_os_dew/hw2_os_dew.c",
+		"/Users/david/Desktop/codir/ace-builds/src/ext-beautify.js",
+		"/Users/david/Desktop/codir/ace-builds/src/ext-emmet.js",
+		"/Users/david/Desktop/codir/ace-builds/src/ext-language_tools.js",
+		"/Users/david/Desktop/codir/views/directory.jade",
+		"/Users/david/Desktop/codir/ace-builds/src-noconflict/theme-terminal.js",
+		"/Users/david/Desktop/codir/ace-builds/src-min/theme-monokai.js",
+		"/Users/david/Desktop/codir/ace-builds/src-min/theme-idle_fingers.js",
+		"/Users/david/Desktop/codir/ace-builds/src-noconflict/theme-monokai.js",
+		"/Users/david/Desktop/codir/ace-builds/src/theme-monokai.js",
+		"/Users/david/Desktop/codir/scripts/editorScript.js",
+		"/Users/david/Desktop/codir/editorScript.js",
+		"/Users/david/Desktop/Rcode/style.css",
+		"/Users/david/Desktop/Rcode/views/editor.jade",
+		"/Users/david/Desktop/Rcode/editorScript.js",
+		"/Users/david/Desktop/Rcode/views/directory.jade",
+		"/Users/david/Desktop/Rcode/directoryScript.js",
+		"/Users/david/Desktop/Rcode/index.js",
+		"/Users/david/Desktop/RcodeFiles/file.html",
+		"/Users/david/Desktop/Rcode/test.js",
+		"/Users/david/Desktop/Rcode/editor.html",
+		"/Users/david/Desktop/Rcode/script.js",
+		"/Users/david/Desktop/Rcode/editor.jade",
+		"/Users/david/Desktop/Rcode/directory.jade",
+		"/Users/david/Desktop/Rcode/test",
+		"/Users/david/Desktop/Rcode/file.txt",
+		"/Users/david/Desktop/hw2_os_dew.c",
+		"/Users/david/Desktop/README",
+		"/Users/david/Desktop/test.html",
+		"/Users/david/Desktop/hw1methods3.c",
+		"/Users/david/Desktop/hw1methods.c",
+		"/Users/david/Desktop/hw1methods2.c",
+		"/Users/david/.Trash/testshare.js",
+		"/Users/david/.Trash/testshare.html",
+		"/Users/david/Desktop/socketTest/script.js",
+		"/Users/david/Desktop/socketTest/editor.html",
+		"/Users/david/Desktop/socketTest/file.txt",
+		"/Users/david/Desktop/socketTest/index.js",
+		"/Users/david/Desktop/socketTest/testshare.js",
+		"/Users/david/Desktop/socketTest/testshare.html",
+		"/Users/david/Desktop/sharejs/public/style.css",
+		"/Users/david/Desktop/socketTest/index.html",
+		"/Users/david/Desktop/sharejs/index.js",
+		"/Users/david/Desktop/sharejs/views/editor.html",
+		"/Users/david/Desktop/sharejs/public/script.js",
+		"/Users/david/Desktop/sharejs/editor.html",
+		"/Users/david/Desktop/sharejs/editor.ejs.html",
+		"/Users/david/Desktop/socketTest/index1.js"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"history",
+			"delta",
+			"change",
+			"delta",
+			"change",
+			"`",
+			"try",
+			"error",
+			"prin",
+			"rand",
+			">",
+			"arrc",
+			"wait",
+			"sleep",
+			"rgb(50, 50, 50)",
+			"59, 59, 59",
+			"59, 59, 59 ",
+			"20, 20, 20",
+			"53, 54, 55",
+			"41, 41, 41",
+			"cons",
+			"unde",
+			"curs",
+			"position",
+			"ace_se",
+			"user",
+			"ace_selection",
+			"ace-selection",
+			"addmarker",
+			"marker",
+			"addmarker",
+			"marker",
+			"mark",
+			"'ace-selection', 'text', ",
+			"update.cursors",
+			"test",
+			"console",
+			"cursors",
+			"change",
+			"ranges",
+			"cursors",
+			"rgba(255, 255, 255, 0.027451)",
+			"rgb(154, 171, 193)",
+			"#131618",
+			"#1c2127",
+			"editor-",
+			"caret",
+			"test",
+			"'update'",
+			"test",
+			"class",
+			"insert",
+			"add",
+			"class",
+			"stat",
+			"red",
+			"rm",
+			"directory()",
+			"isf",
+			"$(\"meta[name='directory']\").attr('content')",
+			"background",
+			"test",
+			".col-sm-12",
+			"$('#directory')[0]",
+			"connect",
+			"	",
+			"-md-",
+			"    ",
+			"  ",
+			"curcaret",
+			"con",
+			"carat",
+			"print",
+			"searc",
+			"right",
+			"new",
+			"*new",
+			"new",
+			"index",
+			"file ",
+			"#",
+			"hover",
+			"close",
+			"sm",
+			"dr",
+			"'",
+			"$",
+			"container",
+			"border",
+			"50",
+			"margin",
+			"1px",
+			"border",
+			".scr",
+			"scrol"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "codir.py",
+					"settings":
+					{
+						"buffer_size": 2175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1070,
+								1070
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "codirClient.py",
+					"settings":
+					{
+						"buffer_size": 2559,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "codir.sublime-project",
+					"settings":
+					{
+						"buffer_size": 121,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "codir.sublime-workspace",
+					"settings":
+					{
+						"buffer_size": 12492,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 98.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/david/Desktop/socketTest/index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
