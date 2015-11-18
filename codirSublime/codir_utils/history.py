@@ -30,8 +30,6 @@ def init_view(view):
 	insert[id] = [False, False]
 
 def push_history(view):
-	print ('push_history')
-
 	t = millis()
 	id = view.id()
 	if id not in buffer_history: init_view(view)

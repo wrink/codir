@@ -1,12 +1,13 @@
 import sublime, sublime_plugin
 import time, threading, os
-from .codir_utils import history
+from .codir_utils import history, utils
 from . import util_commands
 from . import codir_client as CC
 
 class EditListener(sublime_plugin.EventListener):
 	def __init__(self):
 		self.lock = threading.RLock()
+		self.emitlock = threading.RLock()
 		sublime_plugin.EventListener.__init__(self)
 
 	def on_activated(self, view):
@@ -24,6 +25,17 @@ class EditListener(sublime_plugin.EventListener):
 	def on_load(self, view):
 		print ('loaded view')
 		history.init_view(view)
+
+	def on_modified(self, view):
+		if history.is_insert(view):
+			return
+		else:
+			self.emitlock.acquire()
+			deltas = history.get_deltas(view)
+
+			for i, delta in history.unapplied_deltas:
+				utils.apply_deltas_to_deltas(deltas, delta)
+				view.run_command('apply_deltas', deltas)
 
 	def on_modified_async(self, view):
 		if history.is_insert(view):
