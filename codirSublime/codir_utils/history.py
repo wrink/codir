@@ -53,35 +53,13 @@ def get_undo(view):
 	try:
 		index = keys.index(counter)
 	except:
-		print ('index = -1')
 		return (0, 0)
-
-	print (str(index))
-	print (str(len(keys)))
-	print (edit_history)
-	print (edit_history[id][keys[index]])
 
 	if len(keys) > 1 and index > 0:
 		history_counter[id] = keys[index-1]
-		#return (buffer_history[id][keys[index-1]], edit_history[id][keys[index]])
 		return (buffer_history[id][keys[index]], edit_history[id][keys[index]])
 	else:
-		return (0, 0)
-	# id =  view.id()
-	# counter =  history_counter[id]
-	# keys = sorted(edit_history[id].keys())
-	# try:
-	# 	index = keys.index(counter)
-	# except:
-	# 	init_view(view)
-	# 	return (0, 0)
-
-	# if len(keys) > 0 and index > 0:
-	# 	history_counter[id] = keys[index - 1]
-	# 	return (buffer_history[id][keys[index]], edit_history[id][keys[index]])
-	# elif len(keys) > 0 and index == 0:
-	# 	return (buffer_history[id][keys[index]], edit_history[id][keys[index]])
-	# else: return (0, 0)
+		return (0, 0)[keys[index]], edit_history[id][keys[index]])
 
 def get_redo(view):
 	id =  view.id()
@@ -90,49 +68,20 @@ def get_redo(view):
 	try:
 		index = keys.index(counter)
 	except:
-		print ('index = -1')
 		return (0, 0)
 
 	if len(keys) > 1 and index < len(keys) - 1:
 		history_counter[id] = keys[index+1]
 		return (buffer_history[id][keys[index]], edit_history[id][keys[index+1]])
 	else:
-		print (str(index))
-		print (str(len(keys)))
-		print (str(keys))
 		return (0, 0)
-	# id =  view.id()
-	# counter =  history_counter[id]
-	# keys = sorted(edit_history[id].keys())
-	# try:
-	# 	index = keys.index(counter)
-	# except:
-	# 	init_view(view)
-	# 	return (0, 0)
-
-	# if len(keys) > 0 and index < len(keys) - 1 :
-	# 	history_counter[id] = keys[index + 1]
-	# 	print ('keys:')
-	# 	print (keys)
-	# 	print ('index: ' + str(index))
-	# 	print ('buffer_history: ')
-	# 	print (buffer_history[id])
-	# 	return (buffer_history[id][keys[index + 1]], edit_history[id][keys[index + 1]])
-	# elif len(keys) > 0 and index == len(keys) - 1 :
-	# 	return (buffer_history[id][keys[index + 1]], edit_history[id][keys[index + 1]])
-	# else: return (0, 0)
-
 def is_insert(view, external_bit=0):
 	t =  millis()
 	id = view.id()
 	if id not in buffer_history:
 		init_view(view)
-	
-	print(id)
 
-	#return insert[id]
 	if insert[id][external_bit]:
-		#buffer_history[id][t] = view.substr(sublime.Region(0, view.size()))
 		insert[id][external_bit] = False
 		return True
 	else: return False
@@ -150,9 +99,3 @@ def get_deltas(view):
 			deltas['additions'][i] = s[-1]
 
 	return deltas
-
-# def apply_deltas(view, deltas):
-
-
-# 	for i in sorted(deltas['additions'].keys()):
-# 		a

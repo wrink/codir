@@ -67,20 +67,16 @@ def apply_deltas_to_deltas(apply_from, apply_to):
 
 def apply_deltas(edit, view, delta):
 	for i in sorted(delta['additions'].keys()):
-	#	history.insert[view.id()][0] = True
 		history.insert[view.id()][0] = True
 		view.insert(edit, i, delta['additions'][i])
 	for i in reversed(sorted(delta['removals'].keys())):
-	#	history.insert[view.id()][0] = True
 		history.insert[view.id()][0] = True
 		view.erase(edit, sublime.Region(i, i+1))
 
 def remove_deltas(edit, view, delta):
 	for i in sorted(delta['removals'].keys()):
-	#	history.insert[view.id()][0] = True
 		history.insert[view.id()][0] = True
 		view.insert(edit, i, delta['removals'][i])
 	for i in reversed(sorted(delta['additions'].keys())):
-	# 	history.insert[view.id()][0] = True
 		history.insert[view.id()][0] = True
 		view.erase(edit, sublime.Region(i, i+1))
