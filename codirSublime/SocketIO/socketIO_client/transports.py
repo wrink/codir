@@ -142,7 +142,7 @@ class WebsocketTransport(AbstractTransport):
 
     def recv_packet(self):
         try:
-            packet_text = self._connection.recv()
+            packet_text = self._connection.recv().decode('latin-1')
         except websocket.WebSocketTimeoutException as e:
             raise TimeoutError('recv timed out (%s)' % e)
         except websocket.SSLError as e:

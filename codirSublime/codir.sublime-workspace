@@ -4,614 +4,575 @@
 		"selected_items":
 		[
 			[
-				"ex",
-				"except"
-			],
-			[
-				"zi",
-				"zipf"
-			],
-			[
-				"pr",
-				"project"
-			],
-			[
-				"c",
-				"command"
-			],
-			[
-				"z",
-				"zip"
-			],
-			[
-				"f",
-				"for	For Loop"
-			],
-			[
-				"r",
-				"root"
-			],
-			[
-				"pro",
-				"project"
-			],
-			[
-				"o",
-				"open"
-			],
-			[
-				"re",
-				"return"
-			],
-			[
-				"err",
-				"error_message"
-			],
-			[
-				"is",
-				"isValidId"
-			],
-			[
-				"su",
-				"sublime"
-			],
-			[
 				"s",
-				"substr"
-			],
-			[
-				"p",
-				"portAndHost"
-			],
-			[
-				"send",
-				"sendZip"
-			],
-			[
-				"zp",
-				"zipf"
-			],
-			[
-				"zipf",
-				"zipf"
-			],
-			[
-				"se",
-				"self"
-			],
-			[
-				"T",
-				"True"
-			],
-			[
-				"cl",
-				"close"
-			],
-			[
-				"file",
-				"file2"
-			],
-			[
-				"fil",
-				"file"
-			],
-			[
-				"C",
-				"CodirServerClientThread"
-			],
-			[
-				"__",
-				"__init__"
-			],
-			[
-				"A",
-				"addr"
-			],
-			[
-				"H",
-				"HOST"
-			],
-			[
-				"nu",
-				"num"
-			],
-			[
-				"tre",
-				"TRUE"
-			],
-			[
-				"wh",
-				"while"
-			],
-			[
-				"Cus",
-				"CUSTOMERS"
-			],
-			[
-				"a",
-				"available"
-			],
-			[
-				"ran",
-				"random"
-			],
-			[
-				"ra",
-				"rand"
-			],
-			[
-				"n",
-				"num"
-			],
-			[
-				"m",
-				"maximum"
-			],
-			[
-				"ne",
-				"need"
-			],
-			[
-				"si",
-				"sizeof"
-			],
-			[
-				"ma",
-				"malloc"
-			],
-			[
-				"cu",
-				"cusNo"
-			],
-			[
-				"cus",
-				"cusNo"
-			],
-			[
-				"num",
-				"num"
-			],
-			[
-				"req",
-				"req"
-			],
-			[
-				"new",
-				"newReq"
-			],
-			[
-				"if",
-				"isSafe"
-			],
-			[
-				"all",
-				"allocated"
-			],
-			[
-				"av",
-				"available"
-			],
-			[
-				"i",
-				"if	If Condition"
-			],
-			[
-				"def",
-				"define"
-			],
-			[
-				"ar",
-				"arg"
-			],
-			[
-				"in",
-				"int"
-			],
-			[
-				"bo",
-				"border-box"
-			],
-			[
-				"ace",
-				"ace_selection"
-			],
-			[
-				"ac",
-				"ace_selection"
-			],
-			[
-				"co",
-				"console"
-			],
-			[
-				"ge",
-				"getSession"
-			],
-			[
-				"chan",
-				"change-select-update"
-			],
-			[
-				"get",
-				"getDirectory"
-			],
-			[
-				"New",
-				"new-page-update"
-			],
-			[
-				"Ne",
-				"NewPageUpdate"
-			],
-			[
-				"e",
-				"editor"
-			],
-			[
-				"io",
-				"ioFileConnection"
-			],
-			[
-				"te",
-				"text"
-			],
-			[
-				"g",
-				"getDirectory"
-			],
-			[
-				"ke",
-				"keyEvent"
-			],
-			[
-				"ed",
-				"editor"
-			],
-			[
-				"fu",
-				"full-width"
-			],
-			[
-				"car",
-				"caret"
-			],
-			[
-				"key",
-				"keyCode"
-			],
-			[
-				"sta",
-				"startToEnd"
-			],
-			[
-				"ca",
-				"caret"
-			],
-			[
-				"endC",
-				"endContainer"
-			],
-			[
-				"en",
-				"end"
-			],
-			[
-				"up",
-				"update"
-			],
-			[
-				"endc",
-				"endContainer"
-			],
-			[
-				"care",
-				"carets"
-			],
-			[
-				"doc",
-				"document"
-			],
-			[
-				"no",
-				"nodes"
-			],
-			[
-				"RG",
-				"rgba()"
-			],
-			[
-				"fi",
-				"firstChild"
-			],
-			[
-				"lo",
-				"log"
+				"socket"
 			],
 			[
 				"on",
-				"onclick"
+				"on_live_file_connection"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"so",
+				"socket"
+			],
+			[
+				"to",
+				"toBuffer"
+			],
+			[
+				"tim",
+				"timeout"
+			],
+			[
+				"el",
+				"elif"
+			],
+			[
+				"k",
+				"keys"
+			],
+			[
+				"e",
+				"elif"
+			],
+			[
+				"lo",
+				"lock"
+			],
+			[
+				"de",
+				"deltas"
 			],
 			[
 				"di",
 				"directory"
 			],
 			[
-				"d",
-				"directory"
+				"S",
+				"SocketIO"
 			],
 			[
-				"file-up",
-				"new-file-update"
+				"sha",
+				"shareid"
 			],
 			[
-				"v",
-				"value"
+				"share",
+				"ShareID"
 			],
 			[
-				"mod",
-				"modal"
+				"sh",
+				"shareid"
 			],
 			[
-				"modal",
-				"modal-header"
-			],
-			[
-				"pane",
-				"panel-body"
-			],
-			[
-				"fo",
-				"for	for (…) {…}"
-			],
-			[
-				"dir",
-				"directory"
-			],
-			[
-				"u",
-				"update"
-			],
-			[
-				"con",
-				"console"
-			],
-			[
-				"do",
-				"document"
-			],
-			[
-				"win",
+				"w",
 				"window"
 			],
 			[
-				"st",
-				"startCounter"
+				"p",
+				"print"
+			],
+			[
+				"re",
+				"removals"
+			],
+			[
+				"c",
+				"codir_undo"
+			],
+			[
+				"comm",
+				"command_name"
+			],
+			[
+				"r",
+				"removals"
+			],
+			[
+				"co",
+				"codir_redo"
+			],
+			[
+				"key",
+				"keys"
+			],
+			[
+				"if",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"i",
+				"ifmain	if __name__ == '__main__'"
+			],
+			[
+				"del",
+				"delta"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"ge",
+				"get_deltas"
+			],
+			[
+				"su",
+				"sublime"
+			],
+			[
+				"f",
+				"False"
+			],
+			[
+				"comma",
+				"command_args"
+			],
+			[
+				"bu",
+				"buffer_history"
+			],
+			[
+				"cl",
+				"ClassName"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"sub",
+				"sublime_plugin"
 			],
 			[
 				"l",
 				"log"
 			],
 			[
-				"node",
-				"nodeSet"
+				"li",
+				"live-file-connection"
 			],
 			[
-				"ch",
-				"childNodes"
+				"em",
+				"emit"
 			],
 			[
-				"set",
-				"setCaret"
+				"ad",
+				"addLocalFolder"
 			],
 			[
-				"sa",
-				"saveSelection"
+				"pro",
+				"project"
 			],
 			[
-				"va",
-				"var"
+				"is",
+				"isRoot"
 			],
 			[
-				"to",
-				"toString"
-			],
-			[
-				"k",
-				"keyCode"
-			],
-			[
-				"pre",
-				"prevent"
-			],
-			[
-				"end",
-				"end"
-			],
-			[
-				"strc",
-				"strcmp"
-			],
-			[
-				"hi",
-				"history"
-			],
-			[
-				"his",
-				"history"
-			],
-			[
-				"Hi",
-				"HISTORY_SIZE"
-			],
-			[
-				"h",
-				"history"
-			],
-			[
-				"Ma",
-				"MAX_LINE"
-			],
-			[
-				"MA",
-				"MAX_LINE"
-			],
-			[
-				"pri",
-				"priority"
-			],
-			[
-				"siz",
-				"size"
-			],
-			[
-				"lef",
-				"left"
-			],
-			[
-				"le",
-				"left"
-			],
-			[
-				"left",
-				"leftOfParent"
+				"wr",
+				"writeLock"
 			],
 			[
 				"tr",
-				"tree"
+				"truepath"
 			],
 			[
-				"list",
-				"list1"
+				"js",
+				"json"
 			],
 			[
-				"prin",
-				"printf	printf …"
+				"projec",
+				"projects"
 			],
 			[
-				"P",
-				"Priority"
+				"read",
+				"readFileSync"
 			],
 			[
-				"inc",
-				"inc	#include \"…\""
+				"fil",
+				"files"
 			],
 			[
-				"val",
-				"value"
+				"ind",
+				"indexOf"
 			],
 			[
-				"prio",
-				"priorityLG"
+				"rena",
+				"renames"
+			],
+			[
+				"rename",
+				"renames"
+			],
+			[
+				"file",
+				"filepath"
+			],
+			[
+				"ca",
+				"catch"
+			],
+			[
+				"write",
+				"writeFileSync"
+			],
+			[
+				"isPro",
+				"isInProject"
+			],
+			[
+				"fo",
+				"folders"
+			],
+			[
+				"new",
+				"newPath"
+			],
+			[
+				"PR",
+				"PROGRAM"
+			],
+			[
+				"ex",
+				"expression_list"
+			],
+			[
+				"simp",
+				"simple_expression"
+			],
+			[
+				"id",
+				"ID"
+			],
+			[
+				"as",
+				"ASSIGNOP"
+			],
+			[
+				"state",
+				"statement"
+			],
+			[
+				"op",
+				"optional"
+			],
+			[
+				"sta",
+				"statement_list"
+			],
+			[
+				"pa",
+				"params"
 			],
 			[
 				"t",
-				"tree"
+				"type"
 			],
 			[
-				"boder-c",
-				"border-color"
+				"ar",
+				"arguments"
 			],
 			[
-				"border-co",
-				"border-color"
+				"arg",
+				"arguments"
+			],
+			[
+				"F",
+				"FUNCTION"
+			],
+			[
+				"I",
+				"INTEGER"
+			],
+			[
+				"a",
+				"a-zA-Z0-9"
+			],
+			[
+				"pag",
+				"page"
+			],
+			[
+				"tlb",
+				"tlbFrames"
+			],
+			[
+				"tl",
+				"tlbFrames"
+			],
+			[
+				"Fr",
+				"FRAME_COUNT"
+			],
+			[
+				"Pa",
+				"PAGE_COUNT"
+			],
+			[
+				"fif",
+				"fifoCounter"
+			],
+			[
+				"fr",
+				"FRAME_COUNT"
+			],
+			[
+				"ag",
+				"argv"
+			],
+			[
+				"P",
+				"PAGE_COUNT"
+			],
+			[
+				"PA",
+				"PAGE_SIZE"
+			],
+			[
+				"page",
+				"page"
+			],
+			[
+				"st",
+				"strcpy"
+			],
+			[
+				"get",
+				"getOffset"
+			],
+			[
+				"b",
+				"bin"
+			],
+			[
+				"ren",
+				"rename-event"
+			],
+			[
+				"jso",
+				"json"
+			],
+			[
+				"emi",
+				"EventEmitter"
+			],
+			[
+				"fi",
+				"files"
+			],
+			[
+				"remo",
+				"removePath"
+			],
+			[
+				"isI",
+				"isInProject"
+			],
+			[
+				"path",
+				"path"
+			],
+			[
+				"rem",
+				"removePath"
+			],
+			[
+				"stat",
+				"stats"
+			],
+			[
+				"even",
+				"event"
+			],
+			[
+				"add",
+				"addPath"
+			],
+			[
+				"it",
+				"itemstat"
+			],
+			[
+				"ifac",
+				"ifaces"
+			],
+			[
+				"wo",
+				"workspace-file-edit-update"
+			],
+			[
+				"o",
+				"on"
+			],
+			[
+				"fie",
+				"filepath"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"fu",
+				"function"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "codir.py",
+			"file": "util_commands.py",
 			"settings":
 			{
-				"buffer_size": 2175,
+				"buffer_size": 2987,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "codirClient.py",
+			"file": "listener.py",
 			"settings":
 			{
-				"buffer_size": 2559,
+				"buffer_size": 1085,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "codir.sublime-project",
+			"file": "Default (OSX).sublime-keymap",
 			"settings":
 			{
-				"buffer_size": 121,
+				"buffer_size": 120,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "codir.sublime-workspace",
+			"file": "codir_client.py",
 			"settings":
 			{
-				"buffer_size": 12492,
+				"buffer_size": 1636,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/david/Desktop/codir/codirServer/index.js",
+			"settings":
+			{
+				"buffer_size": 8990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/david/Desktop/codir/codirServer/test.js",
+			"settings":
+			{
+				"buffer_size": 326,
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 275.0,
+		"height": 375.0,
+		"last_filter": "pac",
 		"selected_items":
 		[
-			[
-				"save",
-				"File: Save All"
-			],
-			[
-				"pack",
-				"Package Control: Install Package"
-			],
-			[
-				"ta",
-				"Indentation: Convert to Tabs"
-			],
-			[
-				"tabs",
-				"Indentation: Convert to Tabs"
-			],
-			[
-				"upp",
-				"Convert Case: Upper Case"
-			],
-			[
-				"",
-				"Convert Case: Upper Case"
-			],
 			[
 				"pac",
 				"Package Control: Install Package"
 			],
 			[
-				"inst",
-				"Package Control: Install Package"
-			],
-			[
 				"pa",
-				"Preferences: Browse Packages"
+				"Package Control: Remove Package"
 			],
 			[
-				"package",
-				"Preferences: Browse Packages"
+				"colo",
+				"Colorsublime: Install Theme"
 			],
 			[
-				"packa",
-				"Preferences: Browse Packages"
-			],
-			[
-				"Package Control: ",
+				"pack",
 				"Package Control: Install Package"
 			]
 		],
-		"width": 457.0
+		"width": 435.0
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 126.0,
+		"history":
+		[
+			"window.run_command('codir_client')",
+			"128.164.26.113:8000",
+			"window.run_command('codir_client')",
+			"128.164.26.113:8000",
+			"window.run_command('codir_client')",
+			"os.getcwd()",
+			"os.path.getcwd()",
+			"import os",
+			"sublime.log_commands(True)",
+			"sublime.log_commands('True')",
+			"view.run_command('codir_redo')",
+			"sublime.log_commands(True)",
+			"sublime.log_commands()",
+			"view.run_command('codir_undo')",
+			"sublime.log_commands(True)",
+			"view.run_command('codir_undo')",
+			"sublime.log_commands(True)",
+			"view.run_command('codir_undo')",
+			"sublime.log_commands(True)",
+			"window.log_commands(True)",
+			"view.log_commands(True)",
+			"print(round(time.time()))",
+			"round(print(time.time()))",
+			"print(time.time())",
+			"import time",
+			"print (sublime.Region)",
+			"print sublime.Region",
+			"view.insert(edit, 0, 'hohoho')",
+			"view.run_command('codir_undo')",
+			"view.run_command('puts')",
+			"view.run_command('insert')",
+			"view.run_command('test')",
+			"sublime.log_commands(True)",
+			"sublime.log_commands(False)",
+			"sublime.log_input(False)",
+			"sublime.log_input(True)",
+			"print (sublime.log_input)",
+			"print (sublime.__dict__)",
+			"print (sublime)",
+			"print sublime",
+			"sublime.log_iput(True)",
+			"log_iput(True)",
+			"import sublime",
+			"sublime.log_iput(True)",
+			"log_iput(True)",
+			"print(d)",
+			"d = window.project_data()",
+			"window.set_project_data(d)",
+			"d['folders'].append({'path': '/dick/butt'})",
+			"window.set_project_data(d)",
+			"d['folders'].append({'path': '/duck/duck'})",
+			"window.set_project_data(d)",
+			"d['folders'].append({'path': '/duck'})",
+			"d['folders'][2] = {'path': '/duck'}",
+			"d.folders[2] = {'path': '/duck'}",
+			"print(d)",
+			"print d",
+			"d = window.project_data()",
+			"print d",
+			"d = window.project_data",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
 	},
 	"distraction_free":
 	{
@@ -622,68 +583,47 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir_utils"
+	],
 	"file_history":
 	[
-		"/Users/david/Library/Application Support/Sublime Text 2/Settings/Session.sublime_session",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codir.sublime-workspace",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codir.sublime-project",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/example.py",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/codirClient",
-		"/Users/david/Desktop/fileTest.py",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/codirSublime/test.py",
-		"/Users/david/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/david/Desktop/hw2_os_dew/hw2_os_dew.c",
-		"/Users/david/Desktop/codir/ace-builds/src/ext-beautify.js",
-		"/Users/david/Desktop/codir/ace-builds/src/ext-emmet.js",
-		"/Users/david/Desktop/codir/ace-builds/src/ext-language_tools.js",
-		"/Users/david/Desktop/codir/views/directory.jade",
-		"/Users/david/Desktop/codir/ace-builds/src-noconflict/theme-terminal.js",
-		"/Users/david/Desktop/codir/ace-builds/src-min/theme-monokai.js",
-		"/Users/david/Desktop/codir/ace-builds/src-min/theme-idle_fingers.js",
-		"/Users/david/Desktop/codir/ace-builds/src-noconflict/theme-monokai.js",
-		"/Users/david/Desktop/codir/ace-builds/src/theme-monokai.js",
-		"/Users/david/Desktop/codir/scripts/editorScript.js",
-		"/Users/david/Desktop/codir/editorScript.js",
-		"/Users/david/Desktop/Rcode/style.css",
-		"/Users/david/Desktop/Rcode/views/editor.jade",
-		"/Users/david/Desktop/Rcode/editorScript.js",
-		"/Users/david/Desktop/Rcode/views/directory.jade",
-		"/Users/david/Desktop/Rcode/directoryScript.js",
-		"/Users/david/Desktop/Rcode/index.js",
-		"/Users/david/Desktop/RcodeFiles/file.html",
-		"/Users/david/Desktop/Rcode/test.js",
-		"/Users/david/Desktop/Rcode/editor.html",
-		"/Users/david/Desktop/Rcode/script.js",
-		"/Users/david/Desktop/Rcode/editor.jade",
-		"/Users/david/Desktop/Rcode/directory.jade",
-		"/Users/david/Desktop/Rcode/test",
-		"/Users/david/Desktop/Rcode/file.txt",
-		"/Users/david/Desktop/hw2_os_dew.c",
-		"/Users/david/Desktop/README",
-		"/Users/david/Desktop/test.html",
-		"/Users/david/Desktop/hw1methods3.c",
-		"/Users/david/Desktop/hw1methods.c",
-		"/Users/david/Desktop/hw1methods2.c",
-		"/Users/david/.Trash/testshare.js",
-		"/Users/david/.Trash/testshare.html",
-		"/Users/david/Desktop/socketTest/script.js",
-		"/Users/david/Desktop/socketTest/editor.html",
-		"/Users/david/Desktop/socketTest/file.txt",
-		"/Users/david/Desktop/socketTest/index.js",
-		"/Users/david/Desktop/socketTest/testshare.js",
-		"/Users/david/Desktop/socketTest/testshare.html",
-		"/Users/david/Desktop/sharejs/public/style.css",
-		"/Users/david/Desktop/socketTest/index.html",
-		"/Users/david/Desktop/sharejs/index.js",
-		"/Users/david/Desktop/sharejs/views/editor.html",
-		"/Users/david/Desktop/sharejs/public/script.js",
-		"/Users/david/Desktop/sharejs/editor.html",
-		"/Users/david/Desktop/sharejs/editor.ejs.html",
-		"/Users/david/Desktop/socketTest/index1.js"
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir_utils/history.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/test.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/socketIO/__init__.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/listener.py",
+		"/Users/david/Desktop/codir/codirServer/index.js",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/Default (OSX).sublime-keymap",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/util_commands.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir_utils/utils.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir_utils/util_commands.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/__init__.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir-utils/__init__.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/history.py",
+		"/Users/david/Desktop/codir/codirServer/projects.json",
+		"/Users/david/Desktop/codir/codirServer/test.js",
+		"/Users/david/Desktop/codir/codirSublime/codirClient.py",
+		"/Users/david/Desktop/hw4-dew 2.zip",
+		"/Users/david/Downloads/scanner.l",
+		"/Users/david/Downloads/parser.y",
+		"/Users/david/Downloads/project_1.y",
+		"/Users/david/Downloads/project_1.l",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/david/Desktop/hw4-dew-unmodified.c",
+		"/Users/david/Desktop/hw4-dew-modified.c",
+		"/Users/david/Desktop/addresses.txt",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/User/Node.sublime-build",
+		"/Users/david/Desktop/codir/codirServer/package.json",
+		"/Users/david/Desktop/codir/codirServer/projects.codir.json",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/codirSublime/codir.py",
+		"/Users/david/Library/Application Support/Sublime Text 3/Packages/Colorsublime/Colorsublime.sublime-settings"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -694,104 +634,70 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
-			"history",
-			"delta",
-			"change",
-			"delta",
-			"change",
-			"`",
-			"try",
-			"error",
-			"prin",
-			"rand",
-			">",
-			"arrc",
-			"wait",
-			"sleep",
-			"rgb(50, 50, 50)",
-			"59, 59, 59",
-			"59, 59, 59 ",
-			"20, 20, 20",
-			"53, 54, 55",
-			"41, 41, 41",
-			"cons",
-			"unde",
-			"curs",
-			"position",
-			"ace_se",
-			"user",
-			"ace_selection",
-			"ace-selection",
-			"addmarker",
-			"marker",
-			"addmarker",
-			"marker",
-			"mark",
-			"'ace-selection', 'text', ",
-			"update.cursors",
-			"test",
-			"console",
-			"cursors",
-			"change",
-			"ranges",
-			"cursors",
-			"rgba(255, 255, 255, 0.027451)",
-			"rgb(154, 171, 193)",
-			"#131618",
-			"#1c2127",
-			"editor-",
-			"caret",
-			"test",
-			"'update'",
-			"test",
-			"class",
-			"insert",
-			"add",
-			"class",
-			"stat",
-			"red",
-			"rm",
-			"directory()",
-			"isf",
-			"$(\"meta[name='directory']\").attr('content')",
-			"background",
-			"test",
-			".col-sm-12",
-			"$('#directory')[0]",
-			"connect",
-			"	",
-			"-md-",
-			"    ",
-			"  ",
-			"curcaret",
-			"con",
-			"carat",
+			"Liste",
+			"listen",
+			"writeF",
+			"push",
 			"print",
-			"searc",
-			"right",
-			"new",
-			"*new",
-			"new",
+			"test",
+			"True",
+			"true",
+			"push",
+			"not in view",
+			"is_insert[",
+			"is_insert",
+			"Region",
+			"is_in",
+			"if is",
+			"args",
+			"self.buffer_history =",
+			"window.active_view()",
+			"sublime",
+			"zip",
+			"addpa",
+			"var json",
 			"index",
-			"file ",
-			"#",
-			"hover",
-			"close",
-			"sm",
-			"dr",
-			"'",
-			"$",
-			"container",
-			"border",
-			"50",
-			"margin",
-			"1px",
-			"border",
-			".scr",
-			"scrol"
+			"indexOf[",
+			"movepat",
+			"rela",
+			"roo",
+			"root",
+			"console.log",
+			"addpath",
+			"250",
+			" in ",
+			"null",
+			"intege",
+			"func",
+			"tab",
+			"autocom",
+			"d",
+			"strc",
+			"str",
+			"count",
+			"strcmp",
+			"strcpy",
+			"strcp",
+			"signed",
+			"char ",
+			"addto",
+			"page",
+			"add",
+			"\\n",
+			"type",
+			"signed ",
+			"getIP",
+			"stringfy",
+			"adm",
+			".codir",
+			"size",
+			"process.argc",
+			"arg",
+			"path",
+			"print("
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -809,23 +715,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "codir.py",
+					"file": "util_commands.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2175,
+						"buffer_size": 2987,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1070,
-								1070
+								194,
+								194
 							]
 						],
 						"settings":
@@ -834,25 +741,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 786.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "codirClient.py",
+					"file": "listener.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2559,
+						"buffer_size": 1085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								657,
+								657
 							]
 						],
 						"settings":
@@ -864,22 +773,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "codir.sublime-project",
+					"file": "Default (OSX).sublime-keymap",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 121,
+						"buffer_size": 120,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								118,
+								118
 							]
 						],
 						"settings":
@@ -890,33 +801,92 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "codir.sublime-workspace",
+					"file": "codir_client.py",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12492,
+						"buffer_size": 1636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1405,
+								1405
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/david/Desktop/codir/codirServer/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3473,
+								3473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1347.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/david/Desktop/codir/codirServer/test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 326,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								49,
+								49
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -924,11 +894,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -955,37 +925,57 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 98.0
+		"height": 102.0
 	},
-	"replace":
+	"output.find_results":
 	{
 		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/Node.sublime-build",
+	"project": "codir.sublime-project",
+	"replace":
+	{
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"",
-				"/Users/david/Desktop/socketTest/index.html"
-			]
 		],
 		"width": 0.0
 	},
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
 		"width": 0.0
 	},
+	"select_symbol":
+	{
+		"height": 375.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 408.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": false,
-	"show_open_files": true,
+	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 150.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

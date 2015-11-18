@@ -1,0 +1,10 @@
+[
+	{
+		"keys": ["super+z"],
+		"command": "codir_undo"
+	},
+	{
+		"keys": ["super+shift+z"],
+		"command": "codir_redo"
+	}
+]
