@@ -1,0 +1,20 @@
+[
+	{
+    	"caption": "Share",
+    	"id": "codir_share",
+    	"command": "codir_share",
+    	"args":
+    	{
+    		"paths": []
+    	} 
+	},
+	{
+    	"caption": "Share To...",
+    	"id": "codir_share_to",
+    	"command": "codir_share_to",
+    	"args":
+    	{
+    		"paths": []
+    	} 
+	}
+]

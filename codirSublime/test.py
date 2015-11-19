@@ -10,3 +10,6 @@
 # socketIO.on('test', on_aaa_response)
 # socketIO.emit('live-file-connection')
 # socketIO.wait(seconds=1)
+import os
+
+print (os.path.dirname(os.path.realpath(__file__)))

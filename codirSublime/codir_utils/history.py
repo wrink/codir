@@ -1,22 +1,22 @@
 import sublime, sublime_plugin
-import time, difflib
-
+import difflib
+from datetime import datetime
 from sublime import Region
 
 global history_counter
 global buffer_history
 global edit_history
 global insert
-global unapplied_deltas
+global delta_queue
 
 history_counter = {}
 buffer_history = {}
 edit_history = {}
 insert = {}
-unapplied_deltas = {}
+delta_queue = {}
 
 def millis():
-	return int(round(time.time() * 1000))
+	return (0.1 + datetime.now().microsecond) / 1000
 
 def init_view(view):
 	t = millis()
@@ -28,8 +28,10 @@ def init_view(view):
 	edit_history[id] = {}
 	edit_history[id][t] = {'additions': {}, 'removals': {}}
 	insert[id] = [False, False]
+	delta_queue[id] = []
 
 def push_history(view):
+	print ('push_history')
 	t = millis()
 	id = view.id()
 	if id not in buffer_history: init_view(view)
@@ -53,13 +55,16 @@ def get_undo(view):
 	try:
 		index = keys.index(counter)
 	except:
+		print ('index-1')
 		return (0, 0)
 
 	if len(keys) > 1 and index > 0:
 		history_counter[id] = keys[index-1]
 		return (buffer_history[id][keys[index]], edit_history[id][keys[index]])
 	else:
-		return (0, 0)[keys[index]], edit_history[id][keys[index]])
+		print (len(keys))
+		print (index)
+		return (0, 0)
 
 def get_redo(view):
 	id =  view.id()
@@ -68,12 +73,15 @@ def get_redo(view):
 	try:
 		index = keys.index(counter)
 	except:
+		print ('index-1')
 		return (0, 0)
 
 	if len(keys) > 1 and index < len(keys) - 1:
 		history_counter[id] = keys[index+1]
 		return (buffer_history[id][keys[index]], edit_history[id][keys[index+1]])
 	else:
+		print (len(keys))
+		print (index)
 		return (0, 0)
 def is_insert(view, external_bit=0):
 	t =  millis()
@@ -83,6 +91,7 @@ def is_insert(view, external_bit=0):
 
 	if insert[id][external_bit]:
 		insert[id][external_bit] = False
+		print ('is_insert')
 		return True
 	else: return False
 

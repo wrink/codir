@@ -1,0 +1,13 @@
+[
+{
+    "id": "tools",
+    "children":
+    [
+    {
+        "id": "Connect To...",
+        "caption": "Connect To...",
+        "command": "codir_client"
+    }
+    ]
+}
+]
