@@ -1,7 +1,7 @@
 import sublime, sublime_plugin
 import threading, re, zipfile
 import sys, os
-from .codir_utils import history
+from . import history
 path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, path + '/socketIO')
 from socketIO_client import SocketIO, BaseNamespace, LoggingNamespace
@@ -32,20 +32,20 @@ class ClientThread(threading.Thread):
 
 		host, port = self.shareid.split(':')
 		self.socket = SocketIO(host, int(port), LoggingNamespace)
-
+		print ('test1')
 		sockets[self.window.id()] = {'socket': self.socket, 'window': self.window, 'shareid': self.shareid}
 		
 		self.socket.on('live-file-connection', self.download)
 
-		self.socket.on('workspace-file-edit-update', self.add_to_queue)
+		self.socket.on('workspace-file-edit-update', self.apply)
 
-		self.socket.on('workspace-open-file-update', self.add_all_to_queue)
-
+		self.socket.on('workspace-open-file-update', self.apply_all)
+		print ('test2')
 		self.socket.emit('live-file-connection', '')
 		while True:
 			self.socket.wait(seconds=1)
 
-	def download(self, *file):
+	def download(self, file):
 		print ('start')
 
 		if not os.path.exists(path + '/projects'):
@@ -55,7 +55,7 @@ class ClientThread(threading.Thread):
 		print (fp)
 
 		f = open(fp + '/' + self.shareid + '.zip', 'wb+')
-		f.write(bytes.fromhex(file[0]))
+		f.write(bytes.fromhex(file))
 		f.close()
 
 		if not os.path.exists(path + '/projects'):
@@ -67,16 +67,17 @@ class ClientThread(threading.Thread):
 		self.window.set_project_data({'folders': [ {'path': path + '/projects/' + self.shareid + '/'} ] })
 		print ('done')
 
-	def add_to_queue(self, delta):
+	def apply(self, delta):
 		path = os.path.dirname(os.path.realpath(__file__)) + '/projects/' + self.shareid + '/' + delta['path']
 
 		views = self.window.views()
 		for view in views:
 			filename = view.file_name()
 			if path in filename and filename.index(path) + len(path) == len(filename):
-				history.delta_queue[view.id()].append(delta['deltas'])
+				view.run_command('apply_deltas', {'deltas': delta['deltas']})
+				#history.delta_queue[view.id()].append(delta['deltas'])
 
-	def add_all_to_queue(self, deltas):
+	def apply_all(self, deltas):
 		for delta in deltas['deltas']:
 			path = os.path.dirname(os.path.realpath(__file__)) + '/projects/' + self.shareid + '/' + deltas['path']
 
@@ -84,7 +85,7 @@ class ClientThread(threading.Thread):
 			for view in views:
 				filename = view.file_name()
 				if path in filename and filename.index(path) + len(path) == len(filename):
-					path.delta_queue[view.id()].append(delta)
+					view.run_command('apply_deltas', {'deltas': delta})
 
 	# def add_to_queue(self, *delta):
 	# 	ids = []
