@@ -34,5 +34,5 @@ def get_deltas(view):
 			deltas['removals'][i] = s[-1] 
 		elif s[0] == '+':
 			deltas['additions'][i] = s[-1]
-
+	print (deltas)
 	return deltas

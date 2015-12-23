@@ -12,7 +12,7 @@ sockets = {}
 
 class CodirClientCommand(sublime_plugin.WindowCommand):
 	def run(self):		
-		self.window.show_input_panel('ShareID', '', self.verify_shareid, None, None)
+		self.window.show_input_panel('ShareID', 'localhost:8000', self.verify_shareid, None, None)
 
 	def verify_shareid(self, shareid):
 		if re.match(r'((^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})|(localhost)):\d{1,4}$', shareid):
@@ -31,9 +31,9 @@ class ClientThread(threading.Thread):
 		self.window = sublime.active_window()
 
 		host, port = self.shareid.split(':')
+		print ('test0')
 		self.socket = SocketIO(host, int(port), LoggingNamespace)
 		print ('test1')
-		sockets[self.window.id()] = {'socket': self.socket, 'window': self.window, 'shareid': self.shareid}
 		
 		self.socket.on('live-file-connection', self.download)
 
@@ -47,6 +47,8 @@ class ClientThread(threading.Thread):
 
 	def download(self, file):
 		print ('start')
+		self.shareid = file['shareid']
+		sockets[self.window.id()] = {'socket': self.socket, 'window': self.window, 'shareid': self.shareid}
 
 		if not os.path.exists(path + '/projects'):
 			os.makedirs(path + '/projects')
@@ -55,7 +57,7 @@ class ClientThread(threading.Thread):
 		print (fp)
 
 		f = open(fp + '/' + self.shareid + '.zip', 'wb+')
-		f.write(bytes.fromhex(file))
+		f.write(bytes.fromhex(file['zip']))
 		f.close()
 
 		if not os.path.exists(path + '/projects'):

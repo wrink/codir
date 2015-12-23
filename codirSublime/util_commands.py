@@ -11,4 +11,5 @@ class ApplyDeltasCommand(sublime_plugin.TextCommand):
 		for i in reversed(sorted(removals.keys())):
 			history.delta[self.view.id()] = True
 			self.view.erase(edit, sublime.Region(int(i), int(i)+1))
-		history.buffer_history[self.view.id()].append(self.view.substr(0, self.view.size()))
+		history.buffer_history[self.view.id()].append(self.view.substr(sublime.Region(0, self.view.size())))
+		print("test")

@@ -1,10 +1,12 @@
 import sublime, sublime_plugin
 import os
-from . import history
+from . import history, file_listener
 from . import codir_client as client
 
 class CodirListener(sublime_plugin.EventListener):
 	def on_modified_async(self, view):
+
+		print(view.window().id())
 		if view.window().id() in client.sockets and not history.is_delta(view):
 			history.buffer_history[view.id()].append(view.substr(sublime.Region(0, view.size())))
 
@@ -13,7 +15,7 @@ class CodirListener(sublime_plugin.EventListener):
 
 			path = 'codirSublime/projects/'
 			file = view.file_name()
-			if file.index(path) > 0:
+			if file.index(path) > 0 and deltas != {'additions': {}, 'removals': {}}:
 			 	path_start = file.index(path) + len(path + socket['shareid'] + '/')
 			 	socket['socket'].emit('workspace-file-edit-update', {'path': file[path_start:], 'deltas': deltas, 'shareid': socket['shareid']})
 		elif view.window().id() not in client.sockets:
@@ -34,12 +36,14 @@ class CodirListener(sublime_plugin.EventListener):
 				socket['socket'].emit('workspace-open-file-update', event)
 
 	def on_new(self, view):
-		if view.window().id() in client.sockets:
+		id = view.window().id()
+		if id in client.sockets:
 			print ('new view')
 			history.init_view(view)
+		
 
 	def on_clone(self, view):
-		if view.window().id() in client.sockets:
+		id = view.window().id()
+		if id in client.sockets:
 			print ('cloned view')
 			history.init_view(view)
-
