@@ -5,9 +5,8 @@ from . import codir_client as client
 
 class CodirListener(sublime_plugin.EventListener):
 	def on_modified_async(self, view):
-
-		print(view.window().id())
-		if view.window().id() in client.sockets and not history.is_delta(view):
+		is_delta = history.is_delta(view)
+		if view.window() and view.window().id() in client.sockets and not is_delta and view.file_name():
 			history.buffer_history[view.id()].append(view.substr(sublime.Region(0, view.size())))
 
 			socket = client.sockets[view.window().id()]
@@ -15,11 +14,17 @@ class CodirListener(sublime_plugin.EventListener):
 
 			path = 'codirSublime/projects/'
 			file = view.file_name()
-			if file.index(path) > 0 and deltas != {'additions': {}, 'removals': {}}:
-			 	path_start = file.index(path) + len(path + socket['shareid'] + '/')
-			 	socket['socket'].emit('workspace-file-edit-update', {'path': file[path_start:], 'deltas': deltas, 'shareid': socket['shareid']})
-		elif view.window().id() not in client.sockets:
-			print ('not in client.sockets')
+			if file.index(path) > 0 and (deltas['additions'] != {} or deltas['removals'] != {}):
+				history.delta_history[view.id()].append(deltas)
+				history.history_pointer[view.id()] = len(history.delta_history[view.id()]) - 1
+				print (history.history_pointer[view.id()])
+
+				path_start = file.index(path) + len(path + socket['shareid'] + '/')
+				socket['socket'].emit('workspace-file-edit-update', {'path': file[path_start:], 'deltas': deltas, 'shareid': socket['shareid']})
+
+	def on_text_command(self, view, command_name, args):
+		if command_name == 'undo' and view.window() and view.window().id() in client.sockets:
+			return ('codir_undo')
 
 	def on_load(self, view):
 		print('loaded')

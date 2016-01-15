@@ -1,13 +1,16 @@
 import sublime, sublime_plugin
 import threading, re, zipfile
-import sys, os
+import sys, os, time, json
+import binascii
 from . import history
 path = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, path + '/socketIO')
 from socketIO_client import SocketIO, BaseNamespace, LoggingNamespace
 
 global sockets
+global windows
 
+windows = {}
 sockets = {}
 
 class CodirClientCommand(sublime_plugin.WindowCommand):
@@ -65,8 +68,15 @@ class ClientThread(threading.Thread):
 
 		z = zipfile.ZipFile(path + '/projects/' + self.shareid + '.zip', 'r')
 		z.extractall(path + '/projects/' + self.shareid + '/')
+		z.close()
+
+		folders = []
+		folders += [{'path': path + '/projects/' + self.shareid + '/' + f} for f in os.listdir(path + '/projects/' + self.shareid + '/') if '.DS_Store' not in f]
 		
-		self.window.set_project_data({'folders': [ {'path': path + '/projects/' + self.shareid + '/'} ] })
+		#self.window.set_project_data({'folders': [ {'path': path + '/projects/' + self.shareid + '/'} ] })
+		self.window.set_project_data({'folders': folders })
+		windows[self.window.id()] = ProjectWatcher(self.window, self.shareid)
+		windows[self.window.id()].start()
 		print ('done')
 
 	def apply(self, delta):
@@ -89,11 +99,116 @@ class ClientThread(threading.Thread):
 				if path in filename and filename.index(path) + len(path) == len(filename):
 					view.run_command('apply_deltas', {'deltas': delta})
 
-	# def add_to_queue(self, *delta):
-	# 	ids = []
+class ProjectWatcher(threading.Thread):
+	def __init__(self, window, shareid):
+		self.shareid = shareid
+		self.window = window
+		self.socket = sockets[self.window.id()]['socket']
+		self.project_data = window.project_data()['folders']
+		self.contents = self.get_contents(self.project_data)
+		self.incoming = False
+		threading.Thread.__init__(self)
+	
+	def run(self):
+		while 1:
+			if not self.window.id() in windows: return
+			before = self.contents
+			self.project_data = self.window.project_data()['folders']
+			after = self.get_contents(self.project_data)
+			self.contents = after
 
-	# 	for i, window in sublime.windows():
-	# 		for j, view in window.views():
-	# 			if delta[0]['filename']
+			if before == after:
+				time.sleep(1)
+				continue
+			print('test')
+			#added = [f for f in after if not f in before]
+			#removed = [f for f in before if not f in after]
+			added, removed = [], []
+			for f in after:
+				if not f in before:
+					added += [f]
+			for f in before:
+				if not f in after:
+					removed += [f]
+			
+			if not self.check_incoming():
 
-	# 	history.delta_queue[id]
+				add, rem = [], []
+				for f in added:
+					is_root = True
+					for r in add:
+						if r in f and f.index(r) == 0:
+							is_root = False
+							break
+					if is_root:
+						add.append(f)
+				for f in removed:
+					is_root = True
+					for r in rem:
+						if r in f and f.index(r) == 0:
+							is_root = False
+							break
+					if is_root:
+						rem.append(f)
+
+				fp = os.path.relpath(path + '/projects/' + self.shareid) + '/';
+
+				z = zipfile.ZipFile(fp + '.fdeltas.zip', 'w')
+				prefix = ''
+				for f in added:
+					if prefix in f and prefix != '':
+						start = f.index(prefix) + len(prefix)
+						z.write(f, arcname=f[start:])
+						print(f[start+1:])
+					else:
+						prefix = os.path.dirname(f)
+						z.write(f, arcname=os.path.basename(f))
+						print(os.path.basename(f))
+
+				fdeltas = {'added': {}, 'removed': {}}
+
+				for f in add:
+					if path in f:
+						prefix = os.path.join(path, 'projects', self.shareid)
+						index = f.index(prefix)
+						print(os.path.dirname(f)[index+len(prefix):])
+						fdeltas['added'][f[index+len(prefix):]] = os.path.dirname(f)[index+len(prefix):]
+					# else:
+					# 	fdeltas['added'][os.path.basename(f)] = None
+				for f in rem:
+					prefix = os.path.join(path, 'projects', self.shareid)
+					index = f.index(prefix)
+					fdeltas['removed'][f[index+len(prefix):]] = None
+				
+				f = open(fp + '.fdeltas.json', 'w')
+				json.dump(fdeltas, f)
+				f.close()
+				z.write(os.path.relpath(fp + '.fdeltas.json'), arcname='.fdeltas.json')
+				z.close()
+
+				z = open(fp + '.fdeltas.zip', 'rb')
+				emit = str(binascii.hexlify(z.read()))
+				print(emit)
+				self.socket.emit('workspace-project-edit-update', emit)
+
+				z.close()
+
+				os.remove(fp + '.fdeltas.json')
+				os.remove(fp + '.fdeltas.zip')
+				# self.incoming = True
+
+	def get_contents(self, folders):
+		ret = []
+		for folder in self.project_data:
+			#print('get_contents of '+ folder['path'])
+			ret.append(folder)
+			for root, dirs, files in os.walk(folder['path']):
+				ret+=[os.path.join(root, directory) for directory in dirs]
+				ret+=[os.path.join(root, f) for f in files]
+		return ret
+
+	def check_incoming(self):
+		if self.incoming:
+			self.incoming = False
+			return True
+		return False
