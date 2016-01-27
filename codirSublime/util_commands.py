@@ -3,6 +3,7 @@ import difflib
 from . import history
 from . import codir_client as client
 
+# Applies remote edits directly to a file buffer
 class ApplyDeltasCommand(sublime_plugin.TextCommand):
 	def run(self, edit, deltas):
 		additions = {int(i): deltas['additions'][i] for i in deltas['additions']}
@@ -16,6 +17,8 @@ class ApplyDeltasCommand(sublime_plugin.TextCommand):
 				self.view.erase(edit, sublime.Region(int(i), int(i)+1))
 		history.buffer_history[self.view.id()].append(self.view.substr(sublime.Region(0, self.view.size())))
 
+# Undo function for remote edits
+# Extremely buggy
 class CodirUndoCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		id = self.view.id()
@@ -59,6 +62,8 @@ class CodirUndoCommand(sublime_plugin.TextCommand):
 		path_start = file.index(path) + len(path + socket['shareid'] + '/')
 		socket['socket'].emit('workspace-file-edit-update', {'path': file[path_start:], 'deltas': deltas, 'shareid': socket['shareid']})
 
+# Redo function for remote edits
+# Extremely buggy
 class CodirRedoCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		id = self.view.id()

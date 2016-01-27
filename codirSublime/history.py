@@ -11,6 +11,7 @@ delta = {}
 delta_history = {}
 history_pointer = {}
 
+#creates history objects for any codir window
 def init_view(view):
 	id = view.id()
 	if id not in buffer_history:
@@ -19,6 +20,7 @@ def init_view(view):
 		delta_history[view.id()] = [{ 'additions': {}, 'removals': {}, 'pointer': 0}]
 		history_pointer[view.id()] = 0
 
+#checks whether an edit is local or remote
 def is_delta(view):
 	id = view.id()
 	init_view(view)
@@ -28,6 +30,8 @@ def is_delta(view):
 		return True
 	else: return False
 
+#generates an object containing the most recent changes to a buffer
+#algorithm is flawed
 def get_deltas(view):
 	id = view.id()
 
@@ -42,6 +46,8 @@ def get_deltas(view):
 	print (deltas)
 	return deltas
 
+#generates a modified history object that adjusts for remote changes
+#nonfunction due to the constrains of @get_deltas
 def subtract_undos(prev, curr):
 
 	deltas = prev
@@ -77,6 +83,8 @@ def subtract_undos(prev, curr):
 
 	return deltas
 
+#generates a modified history object that adjusts for remote changes
+#nonfunction due to the constrains of @get_deltas
 def subtract_redos(prev, curr):
 
 	deltas = prev

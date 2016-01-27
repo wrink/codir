@@ -13,6 +13,9 @@ global windows
 windows = {}
 sockets = {}
 
+# Runs when the user clicks Connect To in the Tools menu
+# Prompts the user for a socket and port and verifies the combination
+# If succcesful creates a @ClientThread and lets it run
 class CodirClientCommand(sublime_plugin.WindowCommand):
 	def run(self):		
 		self.window.show_input_panel('ShareID', 'localhost:8000', self.verify_shareid, None, None)
@@ -24,6 +27,7 @@ class CodirClientCommand(sublime_plugin.WindowCommand):
 		else:
 	 		sublime.error_message('ERROR: ' + shareid + 'is not a valid ShareID')
 
+# Client-side Implementation of CoDir
 class ClientThread(threading.Thread):
 	def __init__(self, shareid):
 		self.shareid = shareid
@@ -48,6 +52,8 @@ class ClientThread(threading.Thread):
 		while True:
 			self.socket.wait(seconds=1)
 
+	# When the user connects, downloads remote project to the /projects folder and opens a new window for the project
+	# Creates a socket object for the project and an @ProjectWatcher
 	def download(self, file):
 		print ('start')
 		self.shareid = file['shareid']
@@ -73,12 +79,12 @@ class ClientThread(threading.Thread):
 		folders = []
 		folders += [{'path': path + '/projects/' + self.shareid + '/' + f} for f in os.listdir(path + '/projects/' + self.shareid + '/') if '.DS_Store' not in f]
 		
-		#self.window.set_project_data({'folders': [ {'path': path + '/projects/' + self.shareid + '/'} ] })
 		self.window.set_project_data({'folders': folders })
 		windows[self.window.id()] = ProjectWatcher(self.window, self.shareid)
 		windows[self.window.id()].start()
 		print ('done')
 
+	# When a currently open remote file is edited remotely applies edits to the file buffer
 	def apply(self, delta):
 		path = os.path.dirname(os.path.realpath(__file__)) + '/projects/' + self.shareid + '/' + delta['path']
 
@@ -87,8 +93,8 @@ class ClientThread(threading.Thread):
 			filename = view.file_name()
 			if path in filename and filename.index(path) + len(path) == len(filename):
 				view.run_command('apply_deltas', {'deltas': delta['deltas']})
-				#history.delta_queue[view.id()].append(delta['deltas'])
 
+	# When a remote file is opened, applies all present edits to the file vuffer
 	def apply_all(self, deltas):
 		for delta in deltas['deltas']:
 			path = os.path.dirname(os.path.realpath(__file__)) + '/projects/' + self.shareid + '/' + deltas['path']
@@ -99,6 +105,8 @@ class ClientThread(threading.Thread):
 				if path in filename and filename.index(path) + len(path) == len(filename):
 					view.run_command('apply_deltas', {'deltas': delta})
 
+# Watches all currently open remote projects
+# When a remote file is renamed, moved, created or deleted locally it sends data to the server to be corrected
 class ProjectWatcher(threading.Thread):
 	def __init__(self, window, shareid):
 		self.shareid = shareid
