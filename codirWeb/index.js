@@ -26,7 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.set('view engine', 'jade');
 
 app.all('/', function(req, res) {
-	var directory = '../RcodeFiles';
+	var directory = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+	console.log(directory)
 	fs.readdir(directory, function(err, files) {
 		if(err) {
 			console.log(err);

@@ -2,10 +2,65 @@ var socket = io();
 var Range = ace.require('ace/range').Range;
 var markers = [];
 
+var deltas = [];
+var userDeltas = [];
+var deltaBuffer = [];
+var historyPointer = 0;
+
 socket.emit('new-page-update', getDirectory());
 
 function getDirectory() {
 	return $("meta[name='directory']").attr('content');
+}
+
+function compoundDeltas() {
+	if (deltaBuffer != []) {
+		userDeltas.push(deltaBuffer);
+		deltaBuffer = [];
+	}
+}
+
+function subtractDeltas(base, negative) {
+	for (i=0; i<base.length; i++) {
+		if (negative.action == 'insert') {
+			if (negative.start.row < base[i].start.row) {
+				length = negative.lines.length - 1;
+				base[i].start.row += length;
+				base[i].end.row += length;
+			} else if (negative.start.row == base[i].start.row && negative.start.column < base[i].start.column) {
+				vertLength = negative.lines.length - 1;
+				horiLength = negative.lines[vertLength].length;
+
+				base[i].start.row += vertLength;
+				base[i].end.row += vertLength;
+				base[i].start.column += horiLength - negative.start.column;
+				if (base[i].start.row == base[i].end.row) base[i].end.column += horiLength - negative.start.column;
+			} else if (negative.start.row < base[i].end.row || (negative.start.row == base[i].end.row && negative.start.column < base[i].end.column)) {
+				vertLength = negative.lines.length - 1;
+				horiLength = negative.lines[vertLength].length;
+				rowCenter = 1 + negative.start.row - set[0].start.row;
+				columnCenter = negative.start.column;
+
+				set = [base[i], base[i]];
+
+				set[0].end.row = negative.start.row;
+				set[0].end.column = negative.start.column;
+				set[0].lines.splice(rowCenter, set[0].lines.length - rowCenter);
+				set[0].lines[set[0].lines.length - 1] = set[0].lines[set[0].lines.length - 1].substr(0, columnCenter);
+
+				set[1].start.row = negative.end.row;
+				set[1].end.row = negative.end.row + vertLength;
+				set[1].start.column = negative.end.column;
+				if (set[1].start.row == set[1].end.row) set[1].end.column += horiLength;
+				set[1].lines.splice(0, rowCenter - 1);
+				set[1].lines[0] = set[1].lines[0].substr(columnCenter);
+
+				base.splice.apply(base, [i, 1].concat(set)); 
+			}
+		} else {
+			//TODO
+		}
+	}
 }
 
 var EditorUpdate = function(event, html) {
@@ -28,10 +83,15 @@ $(document).ready(function() {
 	var preUpdateFlag = true;
 
 	editor.on('change', function(event) {
+		deltas.push(event);
+
 		if (preUpdateFlag) {
 			preUpdateFlag = false;
 		}
 		else {
+			console.log(event);
+			deltaBuffer.push({'delta': event, 'pointer': deltas.length - 1});
+			historyPointer++;
 			socket.emit('editor-update', new EditorUpdate(event, editor.getValue()));
 		}
 	});
