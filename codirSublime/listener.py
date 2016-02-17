@@ -1,6 +1,6 @@
 import sublime, sublime_plugin
 import os
-from . import history, file_listener
+from . import history
 from . import codir_client as client
 
 # Event listener object
