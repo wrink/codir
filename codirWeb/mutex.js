@@ -1,17 +1,27 @@
 var Mutex = function () {
-	this.lock = false;
+	this.locked = false;
+}
 
-	this.aquire = function (callback) {
-		var release = function () {
-			this.lock = false;
-		}
+Mutex.prototype = Object.create(Object.prototype);
 
-		setTimeout(function () {
+Mutex.prototype.constructor = Mutex;
 
-			while (this.lock) {};
-			this.lock = true;
+Mutex.prototype.acquire = function () {
+	while (this.locked);
 
-			callback(release);
-		}, 0);
-	}
+	this.locked = true;
+}
+
+Mutex.prototype.release = function () {
+	this.locked = false;
+}
+
+Mutex.prototype.acquireAsync = function (callback) {
+	setTimeout(function() {
+		while (this.locked);
+
+		this.locked = true;
+
+		callback(Mutex.prototype.release);
+	}, 0);
 }

@@ -64,7 +64,7 @@ function subtractDeltas(base, negative) {
 				set[1].lines[0] = set[1].lines[0].substr(columnCenter);
 
 				base.splice.apply(base, [i, 1].concat(set)); 
-			} else if (base[i].action == 'insert' && base[i].undone && base[i].start.row == negative.start.row && base[i].start.column == negative.start.column) {
+			} else if (/*base[i].action == 'insert' &&*/ base[i].undone && base[i].start.row == negative.start.row && base[i].start.column == negative.start.column) {
 				console.log('i4')
 				var baseStr = '';
 				var negativeStr = '';
@@ -72,65 +72,194 @@ function subtractDeltas(base, negative) {
 				for (j in base[i].lines) baseStr += (j > 0)? '\n' + base[i].lines[j] : base[i].lines[j];
 				for (j in negative.lines) negativeStr += (j > 0)? '\n' + negative.lines[j] : negative.lines[j];
 
-				start = baseStr.indexOf(negativeStr);
+				// positive values deal with location in negative string
+				// negative values deal with location in base string
 
-				if (start >= 0) {
-					set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
-					set[0].id = 0; set[1].id = 1; set[2].id = 2;
+				var start;
+				var end;
 
-					distToStart = start;
-					distToEnd = start + negativeStr.length;
-					startRow = false;
-					for (var j = 0; j < base[i].lines.length; j++) {
-						console.log(j);
-						console.log('set: '+JSON.stringify(set));
-						if (base[i].lines[j].length < distToStart && startRow === false){
-							distToStart -= base[i].lines[j].length + 1;
-						} else if (base[i].lines[j].length >= distToStart && startRow === false) {
-							console.log('start: '+j);
-							set[0].end.row = set[0].start.row + j;
-							set[0].end.column = (j == 0)? set[0].start.column + distToStart : distToStart;
-							set[0].lines.splice(j+1, base[i].lines.length - (j+1));
-							set[0].lines[j] = set[0].lines[j].substr(0, distToStart - ((set[0].lines.length == 1) ? set[0].start.column : 0));
+				var len = 0;
 
-							set[1].start.row = set[0].end.row;
-							set[1].start.column = set[0].end.column;
-							set[1].lines.splice(0, j);
-							set[1].lines[0] = set[1].lines[0].substr(distToStart);
+				if (baseStr.length < negativeStr.length && negativeStr.indexOf(baseStr) > -1)
+				{
+					len = baseStr.length
+					start = negativeStr.indexOf(baseStr);
+					end = start + len;
+				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1) {
+					len = negativeStr.length;
+					start = -baseStr.indexOf(negativeStr);
+					end = start - len;
+				} else {
 
-							startRow = j;
-						}
-
-						if (base[i].lines[j].length < distToEnd) {
-							distToEnd -= base[i].lines[j].length + 1;
-						} else if (base[i].lines[j].length >= distToEnd) {
-							set[1].end.row = set[0].start.row + j;
-							set[1].end.column = (set[1].lines.length == 1)? distToEnd + set[1].start.column : distToEnd;
-							set[1].lines.splice(1 + j - startRow, set[1].lines.length - (1 + j - startRow));
-							set[1].lines[set[1].lines.length-1] = set[1].lines[set[1].lines.length-1].substr(0, distToEnd);
-
-							set[2].start.row = set[1].end.row;
-							set[2].start.column = set[1].end.column;
-							set[2].lines.splice(0, j);
-							set[2].lines[0] = set[2].lines[0].substr(distToEnd);
-							break;
-						}
+					for (var j = 1; j < baseStr.length) {
+						if (baseStr.substr(baseStr.length - (j + 1) ) != negativeStr.substr(0,j)) break;
+						len = j; 
+						start = j + 1 - baseStr.length;
+						end = j;
 					}
 
-					set[1].undone = undefined;
-					
-					negative.lines.splice(0, set[1].lines.length-1);
-					negative.lines[0] = negative.lines[0].substr(set[1].lines[set[1].lines.length-1].length);
-					negative.start.row = set[1].end.row;
-					negative.start.column = set[1].end.column;
+					for (var j = len; j < baseStr.length) {
+						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - (j + 1))) break;
+						len = j;
+						start = negativeStr.length - (j + 1);
+						end = -j;
+					}
+				}
 
-					if (set[2].lines.length == 1 && set[2].lines[0] == '') set.splice(2,1);
-					if (set[0].lines.length == 1 && set[0].lines[0] == '') set.splice(0,1);
-					console.log('set: '+JSON.stringify(set));
+				startRow = base[i].start.row + (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
+				endRow = base[i].start.row + (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+				startColumn = -start - (baseStr.lastIndexOf('\n', Math.abs(start)) + 1) + (startRow == base.start.row)? base.start.column : 0;
+				endColumn = -end - (baseStr.lastIndexOf('\n', Math.abs(end)) + 1) + (endRow == base.start.row)? base.start.column : 0;
+
+				if (start < 0 && end < 0) {
+					console.log('i4.1');
+					set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
+					
+					set[0].end.row = startRow + base[i].end.row;
+					set[0].end.column = startColumn + (startRow == 0)? set[0].start.column;
+					set[0].lines.splice(startRow + 1);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
+
+					set[1].start.row = startRow + base[i].start.row;
+					set[1].end.row = endRow + base[i].start.row;
+					set[1].start.column = startColumn + (zerolength == 1)? set[0].end.column : 0;
+					set[1].end.row = endColumn;
+					set[1].lines = negative.lines;
+					onelength = set[1].lines.length - 1;
+
+					set[2].end.row = endRow + base[i].start.row;
+					set[2].end.column = endColumn + (onelength == 1 && zerolength == 1)? set[0].start.column : 0;
+					set[2].lines.splice(0, zerolength + onelength);
+					set[2].lines[0] = set[2].lines[0].substr(set[1].lines[onelength].length);
+
+					set[1].undone = undefined;
 
 					base.splice.apply(base, [i, 1].concat(set));
-					i += set.length-1;
+				} else if (start < 0) {
+					console.log('i4.2');
+					set = JSON.parse(JSON.stringify(base[i], base[i]]));
+
+					set[0].end.row = startRow + base[i].start.row;
+					set[0].end.column = startColumn + (startRow == 0)? set[0].start.column : 0;
+					set[0].lines.splice(startRow + 1);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
+
+					set[1].start.row = startRow + base[i].start.row;
+					set[1].start.column = startColumn + (zerolength == 1)? set[0].start.column : 0;
+					set[1].lines.splice(0, zerolength);
+					set[1].lines[0] = set[1].lines[0].substr(startColumn);
+
+					set[1].undone = undefined;
+
+					base.splice.apply(base, [i, 1].concat(set));
+				} else if (end < 0) {
+					console.log('i4.3');
+					set = JSON.parse(JSON.stringify(base[i], base[i]]));
+
+					set[0].start.row = startRow + negative.start.row;
+					set[0].end.row = endRow + negative.start.row;
+					set[0].start.column = startColumn + (startRow == 0)? negative.start.column;
+					set[0].end.column = endColumn + (endRow == 0)? negative.start.column;
+					set[0].splice(endRow + 1 - startRow);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, endColumn)
+
+					set[1].start.row = startRow + negative.start.row;
+					set[1].start.column = startColumn + (endRow == 0)? negative.start.column;
+					set[1].splice(0, endRow - startRow);
+					set[1].lines[0] = set[1].lines[0].substr(endColumn);
+
+					set[0].undone = undefined;
+
+					base.splice.apply(base, [i, 1].concat(set));
+				} else {
+					console.log('i4.4');
+					base[i].start.row = negative.start.row + startRow;
+					base[i].start.column = startColumn + (startRow == 0)? negative.start.column : 0;
+
+					base[i].undone = undefined;
 				}
+
+				// start = baseStr.indexOf(negativeStr);
+
+				// if (start >= 0) {
+				// 	set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
+				// 	set[0].id = 0; set[1].id = 1; set[2].id = 2;
+
+				// 	distToStart = start;
+				// 	distToEnd = start + negativeStr.length;
+				// 	startRow = false;
+				// 	for (var j = 0; j < base[i].lines.length; j++) {
+				// 		console.log(j);
+				// 		console.log('set: '+JSON.stringify(set));
+				// 		if (base[i].lines[j].length < distToStart && startRow === false){
+				// 			distToStart -= base[i].lines[j].length + 1;
+				// 		} else if (base[i].lines[j].length >= distToStart && startRow === false) {
+				// 			console.log('start: '+j);
+
+				// 			set[0].end.row = set[0].start.row + j;
+				// 			set[0].end.column = (j == 0)? set[0].start.column + distToStart : distToStart;
+				// 			set[0].lines.splice(j+1, base[i].lines.length - (j+1));
+				// 			set[0].lines[j] = set[0].lines[j].substr(0, distToStart - ((set[0].lines.length == 1) ? set[0].start.column : 0));
+
+				// 			set[1].start.row = set[0].end.row;
+				// 			set[1].start.column = set[0].end.column;
+				// 			set[1].lines.splice(0, j);
+				// 			set[1].lines[0] = set[1].lines[0].substr(distToStart);
+
+				// 			startRow = j;
+				// 		}
+
+				// 		if (base[i].lines[j].length < distToEnd) {
+				// 			distToEnd -= base[i].lines[j].length + 1;
+				// 		} else if (base[i].lines[j].length >= distToEnd) {
+				// 			set[1].end.row = set[0].start.row + j;
+				// 			set[1].end.column = (set[1].lines.length == 1)? distToEnd + set[1].start.column : distToEnd;
+				// 			set[1].lines.splice(1 + j - startRow, set[1].lines.length - (1 + j - startRow));
+				// 			set[1].lines[set[1].lines.length-1] = set[1].lines[set[1].lines.length-1].substr(0, distToEnd);
+
+				// 			set[2].start.row = set[1].end.row;
+				// 			set[2].start.column = set[1].end.column;
+				// 			set[2].lines.splice(0, j);
+				// 			set[2].lines[0] = set[2].lines[0].substr(distToEnd);
+				// 			break;
+				// 		}
+				// 	}
+
+				// 	set[1].undone = undefined;
+					
+				// 	negative.lines.splice(0, set[1].lines.length-1);
+				// 	negative.lines[0] = negative.lines[0].substr(set[1].lines[set[1].lines.length-1].length);
+				// 	negative.start.row = set[1].end.row;
+				// 	negative.start.column = set[1].end.column;
+
+				// 	if (set[2].lines.length == 1 && set[2].lines[0] == '') set.splice(2,1);
+				// 	if (set[0].lines.length == 1 && set[0].lines[0] == '') set.splice(0,1);
+				// 	console.log('set: '+JSON.stringify(set));
+
+				// 	base.splice.apply(base, [i, 1].concat(set));
+				// 	i += set.length-1;
+				// } else {
+				// 	start = negativeStr.indexOf(baseStr);
+
+				// 	distToStart = start;
+				// 	distToEnd = start + negativeStr.length;
+				// 	startRow = false;
+				// 	for (var j=0; j < negative.lines.length; j++) {
+				// 		console.log('negative greater: j='+j);
+				// 		if (negative.lines[j].length < distToStart && startRow === false){
+				// 			distToStart -= negative.lines[j].length + 1;
+				// 		} else if (base[i].lines[j].length >= distToStart && startRow === false) {
+				// 			console.log('start: '+j);
+
+				// 			//TODO
+
+				// 			startRow = j;
+				// 		}
+				// 	}
+				// }
 			}
 		} else {
 			if (negative.end.row < base[i].start.row) {
@@ -158,7 +287,7 @@ function subtractDeltas(base, negative) {
 				vertLength = negative.lines.length - 1;
 				horiLength = negative.lines[vertLength].length;
 
-				if (base[i].action == 'insert')
+				if (/*base[i].action == 'insert'*/ true)
 				{
 					rowCenter = negative.start.row - base[0].start.row;
 					columnCenter = negative.start.column;
@@ -324,6 +453,8 @@ $(document).ready(function() {
 			preUndoRedoFlag = true;
 			editor.session.getDocument().applyDeltas([delta.delta[i]]);
 		}
+
+		userDeltas[historyPointer + 1].pointer = deltas.length - 1;
 	}
 
 	var Redo = function() {
@@ -355,6 +486,8 @@ $(document).ready(function() {
 			preUndoRedoFlag = true;
 			editor.session.getDocument().applyDeltas([delta.delta[i]]);
 		}
+
+		userDeltas[historyPointer].pointer = deltas.length - 1;
 	}
 
 	editor.commands.addCommand({
