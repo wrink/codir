@@ -90,7 +90,7 @@ function subtractDeltas(base, negative) {
 					start = -baseStr.indexOf(negativeStr);
 					end = start - len;
 				} else {
-					for (var j = 1; j < Things.length; j++) {
+					for (var j = 1; j < baseStr; j++) {
 						if(baseStr.substr(baseStr.length - (j + 1)) != negativeStr.substr(0,j)) continue;
 						len = j; 
 						start = j + 1 - baseStr.length;
@@ -110,6 +110,10 @@ function subtractDeltas(base, negative) {
 
 				console.log('start: '+ start);
 				console.log('end: '+ end);
+
+				if (start == undefined) {
+					continue;
+				}
 
 				if (start < 0) {
 					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
@@ -230,8 +234,8 @@ function subtractDeltas(base, negative) {
 					subtractDeltas(base2, neg2);
 					console.log('level up');
 
-					negative.start.row = set[1].end.row;
-					negative.start.column = set[1].end.column;
+					negative.start.row = neg2.end.row;
+					negative.start.column = neg2.end.column;
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
 				}
@@ -411,7 +415,7 @@ function subtractDeltas(base, negative) {
 						set[0].end.row = set[1].start.row;
 						set[0].end.column = set[1].start.column;
 						set[0].lines.splice(rowCenter+1, set[1].lines.length - (rowCenter+1));
-						set[0].lines[rowCenter] = set[0].lines[rowCenter].substr(0, set[0].lines[rowCenter].length - set[1].lines[0].length);
+						set[0].lines[rowCenter-1] = set[0].lines[rowCenter-1].substr(0, set[0].lines[rowCenter-1].length - set[1].lines[0].length);
 						set[0].undone = true;
 
 						base.splice.apply(base, [i, 1].concat(set));
