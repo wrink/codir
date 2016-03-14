@@ -27,6 +27,8 @@ function subtractDeltas(base, negative) {
 		console.log(JSON.stringify(base))
 		console.log(JSON.stringify(negative))
 
+		if (negative.lines.length == 0) break;
+
 		if (negative.action == 'insert') {
 			if (negative.start.row < base[i].start.row) {
 				console.log('i1')
@@ -112,6 +114,14 @@ function subtractDeltas(base, negative) {
 				console.log('end: '+ end);
 
 				if (start == undefined) {
+					// console.log('i4.0')
+					// vertLength = negative.lines.length - 1;
+					// horiLength = negative.lines[vertLength].length;
+
+					// base[i].start.row += vertLength;
+					// base[i].end.row += vertLength;
+					// base[i].start.column = (negative.lines.length == 1)? base[i].start.column + horiLength : horiLength;// - negative.start.column;
+					// if (base[i].start.row == base[i].end.row) base[i].end.column += horiLength;// - negative.start.column;
 					continue;
 				}
 
@@ -138,16 +148,16 @@ function subtractDeltas(base, negative) {
 					console.log('i4.1');
 					set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
 					
-					set[0].end.row = startRow + base[i].end.row;
-					set[0].end.column = startColumn + (startRow == 0)? set[0].start.column : 0;
+					set[0].end.row = startRow + base[i].start.row;
+					set[0].end.column = startColumn + ((startRow == 0)? set[0].start.column : 0);
 					set[0].lines.splice(startRow + 1);
 					zerolength = set[0].lines.length - 1;
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
 
 					set[1].start.row = startRow + base[i].start.row;
 					set[1].end.row = endRow + base[i].start.row;
-					set[1].start.column = startColumn + (zerolength == 1)? set[0].end.column : 0;
-					set[1].end.row = endColumn;
+					set[1].start.column = startColumn + ((zerolength == 1)? set[0].end.column : 0);
+					set[1].end.column = endColumn;
 					set[1].lines = negative.lines;
 					onelength = set[1].lines.length - 1;
 
@@ -161,8 +171,8 @@ function subtractDeltas(base, negative) {
 					base.splice.apply(base, [i, 1].concat(set));
 
 					negative.lines = [];
-					negative.end.row = negative.start.row;
-					negative.end.column = negative.start.column;
+					negative.start.row = negative.start.row;
+					negative.start.column = negative.start.column;
 				} else if (start < 0) {
 					console.log('i4.2');
 					set = JSON.parse(JSON.stringify([base[i], base[i]]));
@@ -339,106 +349,291 @@ function subtractDeltas(base, negative) {
 				continue;
 			} else {
 				console.log('r4')
-				insideStart = (negative.start.row > base[i].start.row || (negative.start.row == base[i].start.row && negative.start.column > base[i].start.column));
-				insideEnd = (negative.end.row < base[i].end.row || (negative.end.row == base[i].end.row && negative.end.column < base[i].end.column));
+				var baseStr = '';
+				var negativeStr = '';
 
-				vertLength = negative.lines.length - 1;
-				horiLength = negative.lines[vertLength].length;
+				for (j in base[i].lines) baseStr += (j > 0)? '\n' + base[i].lines[j] : base[i].lines[j];
+				for (j in negative.lines) negativeStr += (j > 0)? '\n' + negative.lines[j] : negative.lines[j];
 
-				if (/*base[i].action == 'insert'*/ true)
+				// positive values deal with location in negative string
+				// negative values deal with location in base string
+
+				var start;
+				var end;
+
+				var len = 0;
+
+				if (baseStr.length <= negativeStr.length && negativeStr.indexOf(baseStr) > -1)
 				{
-					rowCenter = negative.start.row - base[0].start.row;
-					columnCenter = negative.start.column;
-
-					if (insideStart && insideEnd) {
-						console.log('r4.1')
-
-						set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
-						console.log('set: '+ JSON.stringify(set))
-
-						set[0].end.row = negative.start.row;
-						set[0].end.column = negative.start.column;
-						set[0].lines.splice(rowCenter+1, set[0].lines.length - (rowCenter+1));  //(rowCenter, set[0].lines.length - rowCenter);
-						set[0].lines[set[0].lines.length -1] = set[0].lines[set[0].lines.length -1].substr(0, columnCenter);
-
-						set[2].start.row = negative.end.row;
-						set[2].start.column = negative.end.column;
-						set[2].lines.splice(0, rowCenter + negative.lines.length - 1);
-						set[2].lines[0] = set[2].lines[0].substr(negative.end.column);
-						// set[2].end.row -= vertLength;
-						// if (negative.end.row == base[i].end.row) set[2].end.column -= horiLength;
-
-
-						set[1].start.row = set[0].end.row;
-						set[1].start.column = set[0].end.column;
-						set[1].end.row = negative.end.row;
-						set[1].end.column = negative.end.column;
-						set[1].lines.splice(0, set[0].lines.length-1);
-						set[1].lines.splice(1 + set[1].end.row - set[1].start.row, set[1].lines.length - (1 + set[1].end.row - set[1].start.row));
-						set[1].lines[set[1].lines.length-1] = set[1].lines[set[1].lines.length-1].substr(0, set[1].lines[set[1].lines.length-1].length - set[2].lines[0].length);
-						set[1].lines[0] = set[1].lines[0].substr(set[0].lines[set[0].lines.length-1].length);
-						set[1].undone = true;
-
-						base.splice.apply(base, [i, 1].concat(set));
-						i += 2;
-					} else if (insideStart) {
-						console.log('r4.2')
-						set = JSON.parse(JSON.stringify([base[i], base[i]]));
-
-						set[0].end.row = negative.start.row;
-						set[0].end.column = negative.start.column;
-						set[0].lines.splice(rowCenter, base[i].lines.length - rowCenter);
-						set[0].lines[base[i].lines.length -1] = base[i].lines[base[i].lines.length -1].substr(0, columnCenter);  //(columnCenter);
-
-						set[1].start.row = negative.start.row;
-						set[1].start.column = negative.start.column;
-						set[1].lines.splice(0, rowCenter);
-						set[1].lines[0] = set[0].lines[0].substr(columnCenter);
-						set[1].undone = true;
-
-						base.splice.apply(base, [i, 1].concat(set));
-						i++;
-
-					} else if (insideEnd) {
-						console.log('r4.3')
-						sameEndRow = negative.end.row == base[i].end.row
-
-						set = JSON.parse(JSON.stringify([base[i], base[i]]));
-
-						set[1].start.row = negative.start.row;
-						set[1].start.column = negative.start.column;
-						set[1].lines.splice(0, rowCenter);
-						set[1].lines[0] = base[i].lines[0].substr(negative.end.column - base[i].start.column);
-						set[1].end.row -= vertLength;
-						if (sameEndRow) set[1].end.column -= horiLength;
-
-						set[0].end.row = set[1].start.row;
-						set[0].end.column = set[1].start.column;
-						set[0].lines.splice(rowCenter+1, set[1].lines.length - (rowCenter+1));
-						set[0].lines[rowCenter-1] = set[0].lines[rowCenter-1].substr(0, set[0].lines[rowCenter-1].length - set[1].lines[0].length);
-						set[0].undone = true;
-
-						base.splice.apply(base, [i, 1].concat(set));
-						i++;
-					} else {
-						console.log('r4.4')
-						base[i].undone = true;
-						break; //Remove if it causes trouble
-					}
+					len = baseStr.length
+					start = negativeStr.indexOf(baseStr);
+					end = start + len;
+				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1) {
+					len = negativeStr.length;
+					start = -baseStr.indexOf(negativeStr);
+					end = start - len;
 				} else {
-					console.log('r4.5')
-					if (insideStart) {
-						continue;
-					} else {
-						rowOffset = base[i].start.row - negative.start.row;
-						columnOffset = (base[i].lines.length == 1) ? negative.start.column + base[i].lines[0].length : 0;
+					for (var j = 1; j < baseStr; j++) {
+						if(baseStr.substr(baseStr.length - (j + 1)) != negativeStr.substr(0,j)) continue;
+						len = j; 
+						start = j + 1 - baseStr.length;
+						end = j;
+					};
 
-						base[i].start.row = negative.start.row;
-						base[i].start.column = negative.start.column;
-						base[i].end.row -= rowOffset;
-						base[i].end.column += columnOffset;
+					for (var j = len; j < baseStr.length; j++) {
+						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - (j + 1))) continue;
+						len = j;
+						start = negativeStr.length - (j + 1);
+						end = -j;
 					}
 				}
+
+				console.log('base\n' + baseStr);
+				console.log('nega\n' + negativeStr);
+
+				console.log('start: '+ start);
+				console.log('end: '+ end);
+
+				if (start == undefined) {
+					// console.log('i4.0')
+					// vertLength = negative.lines.length - 1;
+					// horiLength = negative.lines[vertLength].length;
+
+					// base[i].start.row += vertLength;
+					// base[i].end.row += vertLength;
+					// base[i].start.column = (negative.lines.length == 1)? base[i].start.column + horiLength : horiLength;// - negative.start.column;
+					// if (base[i].start.row == base[i].end.row) base[i].end.column += horiLength;// - negative.start.column;
+					continue;
+				}
+
+				if (start < 0) {
+					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
+					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+				} else {
+					startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
+					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+				}
+
+				if (end < 0) {
+					endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+					endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
+				} else{
+					endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+					endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
+				}
+
+				console.log('startRow: '+startRow+' startColumn: '+startColumn);
+				console.log('endRow: '+endRow+' endColumn: '+endColumn);
+
+				if (start < 0 && end < 0) {
+					console.log('r4.1');
+					set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
+					
+					set[0].end.row = startRow + base[i].start.row;
+					set[0].end.column = startColumn + ((startRow == 0)? set[0].start.column : 0);
+					set[0].lines.splice(startRow + 1);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
+
+					console.log('endRow: '+endRow)
+					console.log('baseRow: '+base[i].start.row)
+					set[1].start.row = startRow + base[i].start.row;
+					set[1].end.row = endRow + base[i].start.row;
+					set[1].start.column = startColumn + ((zerolength == 1)? set[0].end.column : 0);
+					set[1].end.column = endColumn;
+					set[1].lines = negative.lines;
+					onelength = set[1].lines.length - 1;
+
+					set[2].start.row = endRow + base[i].start.row;
+					set[2].start.column = endColumn + ((onelength == 1 && zerolength == 1)? set[0].start.column : 0);
+					set[2].lines.splice(0, zerolength + onelength);
+					set[2].lines[0] = set[2].lines[0].substr(set[1].lines[onelength].length);
+
+					set[1].undone = true;
+
+					base.splice.apply(base, [i, 1].concat(set));
+
+					negative.lines = [];
+					negative.end.row = negative.start.row;
+					negative.end.column = negative.start.column;
+				} else if (start < 0) {
+					console.log('r4.2');
+					set = JSON.parse(JSON.stringify([base[i], base[i]]));
+
+					set[0].end.row = startRow + base[i].start.row;
+					set[0].end.column = startColumn + ((startRow == 0)? set[0].start.column : 0);
+					set[0].lines.splice(startRow + 1);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
+
+					set[1].start.row = startRow + base[i].start.row;
+					set[1].start.column = startColumn + ((zerolength == 1)? set[0].start.column : 0);
+					set[1].lines.splice(0, zerolength);
+					set[1].lines[0] = set[1].lines[0].substr(startColumn);
+
+					set[1].undone = true;
+
+					base.splice.apply(base, [i, 1].concat(set));
+
+					negative.start.row = set[1].end.row;
+					negative.start.column = set[1].end.column;
+					negative.lines.splice(0, endRow - startRow);
+					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
+				} else if (end < 0) {
+					console.log('r4.3');
+					set = JSON.parse(JSON.stringify([base[i], base[i]]));
+
+					set[0].start.row = startRow + negative.start.row;
+					set[0].end.row = endRow + negative.start.row;
+					set[0].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
+					set[0].end.column = endColumn + ((endRow == 0)? negative.start.column : 0);
+					set[0].lines.splice(endRow + 1 - startRow);
+					zerolength = set[0].lines.length - 1;
+					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, endColumn)
+
+					set[1].start.row = startRow + negative.start.row;
+					set[1].start.column = startColumn + ((endRow == 0)? negative.start.column : 0);
+					set[1].lines.splice(0, endRow - startRow);
+					set[1].lines[0] = set[1].lines[0].substr(endColumn);
+
+					set[0].undone = true;
+
+					base.splice.apply(base, [i, 1].concat(set));
+
+					negative.end.row = set[0].start.row;
+					negative.end.column = set[0].start.column;
+					negative.lines.splice(startRow+1);
+					neglength = negative.lines.length - 1;
+					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn); 
+				} else {
+					console.log('r4.4');
+					base[i].start.row = negative.start.row + startRow;
+					base[i].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
+					base[i].end.row = negative.start.row + endRow;
+					base[i].end.column = endColumn + ((endRow - startRow == 0)? negative.start.column : 0);
+
+					base[i].undone = true;
+
+					neg2 = JSON.parse(JSON.stringify(negative));
+					neg2.end.row = neg2.start.row + startRow;
+					neg2.end.column = startColumn + ((startRow == 0)? neg2.start.column : 0);
+					neg2.lines.splice(startRow + 1);
+					neg2.lines[startRow] = neg2.lines[startRow].substr(0, startColumn);
+
+					base2 = [];
+					for (var j = i + 1; j < base.length; j++) base2.push(base[j]);
+
+					console.log('level down');
+					subtractDeltas(base2, neg2);
+					console.log('level up');
+
+					negative.start.row = neg2.end.row;
+					negative.start.column = neg2.end.column;
+					negative.lines.splice(0, endRow - startRow);
+					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
+				}				
+
+			// 	console.log('r4')
+			// 	insideStart = (negative.start.row > base[i].start.row || (negative.start.row == base[i].start.row && negative.start.column > base[i].start.column));
+			// 	insideEnd = (negative.end.row < base[i].end.row || (negative.end.row == base[i].end.row && negative.end.column < base[i].end.column));
+
+			// 	vertLength = negative.lines.length - 1;
+			// 	horiLength = negative.lines[vertLength].length;
+
+			// 	if (/*base[i].action == 'insert'*/ true)
+			// 	{
+			// 		rowCenter = negative.start.row - base[0].start.row;
+			// 		columnCenter = negative.start.column;
+
+			// 		if (insideStart && insideEnd) {
+			// 			console.log('r4.1')
+
+			// 			set = JSON.parse(JSON.stringify([base[i], base[i], base[i]]));
+			// 			console.log('set: '+ JSON.stringify(set))
+
+			// 			set[0].end.row = negative.start.row;
+			// 			set[0].end.column = negative.start.column;
+			// 			set[0].lines.splice(rowCenter+1, set[0].lines.length - (rowCenter+1));  //(rowCenter, set[0].lines.length - rowCenter);
+			// 			set[0].lines[set[0].lines.length -1] = set[0].lines[set[0].lines.length -1].substr(0, columnCenter);
+
+			// 			set[2].start.row = negative.end.row;
+			// 			set[2].start.column = negative.end.column;
+			// 			set[2].lines.splice(0, rowCenter + negative.lines.length - 1);
+			// 			set[2].lines[0] = set[2].lines[0].substr(negative.end.column);
+			// 			// set[2].end.row -= vertLength;
+			// 			// if (negative.end.row == base[i].end.row) set[2].end.column -= horiLength;
+
+
+			// 			set[1].start.row = set[0].end.row;
+			// 			set[1].start.column = set[0].end.column;
+			// 			set[1].end.row = negative.end.row;
+			// 			set[1].end.column = negative.end.column;
+			// 			set[1].lines.splice(0, set[0].lines.length-1);
+			// 			set[1].lines.splice(1 + set[1].end.row - set[1].start.row, set[1].lines.length - (1 + set[1].end.row - set[1].start.row));
+			// 			set[1].lines[set[1].lines.length-1] = set[1].lines[set[1].lines.length-1].substr(0, set[1].lines[set[1].lines.length-1].length - set[2].lines[0].length);
+			// 			set[1].lines[0] = set[1].lines[0].substr(set[0].lines[set[0].lines.length-1].length);
+			// 			set[1].undone = true;
+
+			// 			base.splice.apply(base, [i, 1].concat(set));
+			// 			i += 2;
+			// 		} else if (insideStart) {
+			// 			console.log('r4.2')
+			// 			set = JSON.parse(JSON.stringify([base[i], base[i]]));
+
+			// 			set[0].end.row = negative.start.row;
+			// 			set[0].end.column = negative.start.column;
+			// 			set[0].lines.splice(rowCenter, base[i].lines.length - rowCenter);
+			// 			set[0].lines[base[i].lines.length -1] = base[i].lines[base[i].lines.length -1].substr(0, columnCenter);  //(columnCenter);
+
+			// 			set[1].start.row = negative.start.row;
+			// 			set[1].start.column = negative.start.column;
+			// 			set[1].lines.splice(0, rowCenter);
+			// 			set[1].lines[0] = set[0].lines[0].substr(columnCenter);
+			// 			set[1].undone = true;
+
+			// 			base.splice.apply(base, [i, 1].concat(set));
+			// 			i++;
+
+			// 		} else if (insideEnd) {
+			// 			console.log('r4.3')
+			// 			sameEndRow = negative.end.row == base[i].end.row
+
+			// 			set = JSON.parse(JSON.stringify([base[i], base[i]]));
+
+			// 			set[1].start.row = negative.start.row;
+			// 			set[1].start.column = negative.start.column;
+			// 			set[1].lines.splice(0, rowCenter);
+			// 			set[1].lines[0] = base[i].lines[0].substr(negative.end.column - base[i].start.column);
+			// 			set[1].end.row -= vertLength;
+			// 			if (sameEndRow) set[1].end.column -= horiLength;
+
+			// 			set[0].end.row = set[1].start.row;
+			// 			set[0].end.column = set[1].start.column;
+			// 			set[0].lines.splice(rowCenter+1, set[1].lines.length - (rowCenter+1));
+			// 			set[0].lines[rowCenter-1] = set[0].lines[rowCenter-1].substr(0, set[0].lines[rowCenter-1].length - set[1].lines[0].length);
+			// 			set[0].undone = true;
+
+			// 			base.splice.apply(base, [i, 1].concat(set));
+			// 			i++;
+			// 		} else {
+			// 			console.log('r4.4')
+			// 			base[i].undone = true;
+			// 			break; //Remove if it causes trouble
+			// 		}
+			// 	} else {
+			// 		console.log('r4.5')
+			// 		if (insideStart) {
+			// 			continue;
+			// 		} else {
+			// 			rowOffset = base[i].start.row - negative.start.row;
+			// 			columnOffset = (base[i].lines.length == 1) ? negative.start.column + base[i].lines[0].length : 0;
+
+			// 			base[i].start.row = negative.start.row;
+			// 			base[i].start.column = negative.start.column;
+			// 			base[i].end.row -= rowOffset;
+			// 			base[i].end.column += columnOffset;
+			// 		}
+			// 	}
 			}
 		}
 	}
@@ -493,9 +688,9 @@ $(document).ready(function() {
 		console.log(JSON.stringify(deltas))
 
 		for (var i = 1 + delta.pointer; i < deltas.length; i++) {
-			//console.log(JSON.stringify(deltas[i]))
-			//console.log(JSON.stringify(delta.delta))
 			delta.delta = subtractDeltas(delta.delta, JSON.parse(JSON.stringify(deltas[i])));
+			console.log(JSON.stringify(deltas[i]))
+			console.log(JSON.stringify(delta.delta))
 		}
 
 		for (var i = 0; i < delta.delta.length; i++) {
