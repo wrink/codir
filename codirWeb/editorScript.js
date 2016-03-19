@@ -42,7 +42,7 @@ function subtractDeltas(base, negative) {
 
 				base[i].start.row += vertLength;
 				base[i].end.row += vertLength;
-				base[i].start.column = (negative.lines.length == 1)? base[i].start.column + horiLength : horiLength;// - negative.start.column;
+				base[i].start.column = (negative.lines.length == 1)? base[i].start.column + horiLength : base[i].start.column + horiLength - negative.start.column;// - negative.start.column;
 				if (base[i].start.row == base[i].end.row) base[i].end.column += horiLength;// - negative.start.column;
 			} else if (base[i].action == 'insert' && base[i].undone == undefined && (negative.start.row < base[i].end.row || (negative.start.row == base[i].end.row && negative.start.column < base[i].end.column))) {
 				console.log('i3')
@@ -66,6 +66,7 @@ function subtractDeltas(base, negative) {
 				set[1].lines[0] = set[1].lines[0].substr(columnCenter);
 
 				base.splice.apply(base, [i, 1].concat(set)); 
+				i++;
 			} else if (/*base[i].action == 'insert' &&*/ base[i].undone && base[i].start.row == negative.start.row && base[i].start.column == negative.start.column) {
 				console.log('i4')
 				var baseStr = '';
@@ -82,27 +83,41 @@ function subtractDeltas(base, negative) {
 
 				var len = 0;
 
-				if (baseStr.length <= negativeStr.length && negativeStr.indexOf(baseStr) > -1)
+				if (baseStr.length <= negativeStr.length && negativeStr.indexOf(baseStr) > -1 && (base[i].start.row > negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column >= negative.start.column)))
 				{
 					len = baseStr.length
 					start = negativeStr.indexOf(baseStr);
 					end = start + len;
-				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1) {
+				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1 && (base[i].start.row < negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column <= negative.start.column))) {
 					len = negativeStr.length;
 					start = -baseStr.indexOf(negativeStr);
 					end = start - len;
-				} else {
-					for (var j = 1; j < baseStr; j++) {
-						if(baseStr.substr(baseStr.length - (j + 1)) != negativeStr.substr(0,j)) continue;
+				} else if (base[i].start.row < negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column < negative.start.column)) {
+					for (var j = 1; j < baseStr.length; j++) {
+						if(baseStr.substr(baseStr.length - j) != negativeStr.substr(0, j)) continue;
 						len = j; 
-						start = j + 1 - baseStr.length;
+						start = j - baseStr.length;
+						end = j;
+					};
+				} else if (negative.start.row < base[i].start.row || (negative.start.row == base[i].start.row && negative.start.column < base[i].start.column)) {
+					for (var j = 1; j < baseStr.length; j++) {
+						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - j)) continue;
+						len = j;
+						start = negativeStr.length - j;
+						end = -j;
+					}
+				} else {
+					for (var j = 1; j < baseStr.length; j++) {
+						if(baseStr.substr(baseStr.length - j) != negativeStr.substr(0, j)) continue;
+						len = j; 
+						start = j - baseStr.length;
 						end = j;
 					};
 
-					for (var j = len; j < baseStr.length; j++) {
-						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - (j + 1))) continue;
+					for (var j = 1; j < baseStr.length; j++) {
+						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - j)) continue;
 						len = j;
-						start = negativeStr.length - (j + 1);
+						start = negativeStr.length - j;
 						end = -j;
 					}
 				}
@@ -127,19 +142,45 @@ function subtractDeltas(base, negative) {
 
 				if (start < 0) {
 					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+				
+					if (end < 0) {
+						endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+						endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)-1)+1);
+					} else {
+						endRow = (baseStr.substr(0, baseStr.length - 1).match(/\n/g) || []).length;
+						endColumn = len - (negativeStr.lastIndexOf('\n', len-1)+1)
+						// endColumn = baseStr.length - (baseStr.lastIndexOf('\n')+1);
+					}
 				} else {
 					startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+				
+					if (end > 0) {
+						endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+						endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)-1)+1);
+					} else {
+						endRow = (negativeStr.substr(0, negativeStr.length - 1).match(/\n/g) || []).length;
+						endColumn = len - (baseStr.lastIndexOf('\n', len-1)+1)
+						// endColumn = negativeStr.length - (negativeStr.lastIndexOf('\n')+1);
+					}
 				}
 
-				if (end < 0) {
-					endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
-					endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
-				} else{
-					endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
-					endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
-				}
+				// if (start < 0) {
+				// 	startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
+				// 	startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+				// } else {
+				// 	startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
+				// 	startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+				// }
+
+				// if (end < 0) {
+				// 	endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+				// 	endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)-1) + 1) + ((endRow == startRow)? startColumn : 0);
+				// } else{
+				// 	endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+				// 	endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)-1) + 1) + ((endRow == startRow)? startColumn : 0);
+				// }
 
 				console.log('startRow: '+startRow+' startColumn: '+startColumn);
 				console.log('endRow: '+endRow+' endColumn: '+endColumn);
@@ -156,13 +197,13 @@ function subtractDeltas(base, negative) {
 
 					set[1].start.row = startRow + base[i].start.row;
 					set[1].end.row = endRow + base[i].start.row;
-					set[1].start.column = startColumn + ((zerolength == 1)? set[0].end.column : 0);
+					set[1].start.column = startColumn + ((zerolength == 0)? set[0].end.column : 0);
 					set[1].end.column = endColumn;
 					set[1].lines = negative.lines;
 					onelength = set[1].lines.length - 1;
 
 					set[2].end.row = endRow + base[i].start.row;
-					set[2].end.column = endColumn + ((onelength == 1 && zerolength == 1)? set[0].start.column : 0);
+					set[2].end.column = endColumn + ((onelength == 0 && zerolength == 0)? set[0].start.column : 0);
 					set[2].lines.splice(0, zerolength + onelength);
 					set[2].lines[0] = set[2].lines[0].substr(set[1].lines[onelength].length);
 
@@ -173,6 +214,7 @@ function subtractDeltas(base, negative) {
 					negative.lines = [];
 					negative.start.row = negative.start.row;
 					negative.start.column = negative.start.column;
+					i+=2;
 				} else if (start < 0) {
 					console.log('i4.2');
 					set = JSON.parse(JSON.stringify([base[i], base[i]]));
@@ -184,7 +226,7 @@ function subtractDeltas(base, negative) {
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
 
 					set[1].start.row = startRow + base[i].start.row;
-					set[1].start.column = startColumn + ((zerolength == 1)? set[0].start.column : 0);
+					set[1].start.column = startColumn + ((zerolength == 0)? set[0].start.column : 0);
 					set[1].lines.splice(0, zerolength);
 					set[1].lines[0] = set[1].lines[0].substr(startColumn);
 
@@ -196,6 +238,7 @@ function subtractDeltas(base, negative) {
 					negative.start.column = set[1].end.column;
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
+					i++;
 				} else if (end < 0) {
 					console.log('i4.3');
 					set = JSON.parse(JSON.stringify([base[i], base[i]]));
@@ -208,8 +251,8 @@ function subtractDeltas(base, negative) {
 					zerolength = set[0].lines.length - 1;
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, endColumn)
 
-					set[1].start.row = startRow + negative.start.row;
-					set[1].start.column = startColumn + ((endRow == 0)? negative.start.column : 0);
+					set[1].start.row = endRow + negative.start.row;
+					set[1].start.column = endColumn + ((endRow == 0)? negative.start.column : 0);
 					set[1].lines.splice(0, endRow - startRow);
 					set[1].lines[0] = set[1].lines[0].substr(endColumn);
 
@@ -222,12 +265,13 @@ function subtractDeltas(base, negative) {
 					negative.lines.splice(startRow+1);
 					neglength = negative.lines.length - 1;
 					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn); 
+					i++;
 				} else {
 					console.log('i4.4');
 					base[i].start.row = negative.start.row + startRow;
 					base[i].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
 					base[i].end.row = negative.start.row + endRow;
-					base[i].end.column = endColumn + ((endRow - startRow == 0)? negative.start.column : 0);
+					base[i].end.column = endColumn + ((startRow == 0 && startRow == endRow)? negative.start.column : 0);
 
 					base[i].undone = undefined;
 
@@ -240,12 +284,16 @@ function subtractDeltas(base, negative) {
 					base2 = [];
 					for (var j = i + 1; j < base.length; j++) base2.push(base[j]);
 
+					var placeholder = i;
+
 					console.log('level down');
 					subtractDeltas(base2, neg2);
 					console.log('level up');
 
-					negative.start.row = neg2.end.row;
-					negative.start.column = neg2.end.column;
+					i = placeholder
+
+					negative.start.row = base[i].end.row;
+					negative.start.column = base[i].end.column;
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
 				}
@@ -363,27 +411,49 @@ function subtractDeltas(base, negative) {
 
 				var len = 0;
 
-				if (baseStr.length <= negativeStr.length && negativeStr.indexOf(baseStr) > -1)
+				if (baseStr.length <= negativeStr.length && negativeStr.indexOf(baseStr) > -1 && (base[i].start.row > negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column >= negative.start.column)))
 				{
 					len = baseStr.length
 					start = negativeStr.indexOf(baseStr);
 					end = start + len;
-				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1) {
+				} else if (baseStr.length > negativeStr.length && baseStr.indexOf(negativeStr) > -1 && (base[i].start.row < negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column <= negative.start.column))) {
 					len = negativeStr.length;
 					start = -baseStr.indexOf(negativeStr);
 					end = start - len;
-				} else {
-					for (var j = 1; j < baseStr; j++) {
-						if(baseStr.substr(baseStr.length - (j + 1)) != negativeStr.substr(0,j)) continue;
+				} else if (base[i].start.row < negative.start.row || (base[i].start.row == negative.start.row && base[i].start.column < negative.start.column)) {
+					for (var j = 1; j < baseStr.length; j++) {
+						console.log('base\n'+baseStr.substr(baseStr.length - j))
+						console.log('nega\n'+negativeStr.substr(0, j))
+						if(baseStr.substr(baseStr.length - (j)) != negativeStr.substr(0, j)) continue;
 						len = j; 
-						start = j + 1 - baseStr.length;
+						start = j - baseStr.length;
+						end = j;
+					};
+				} else if (negative.start.row < base[i].start.row || (negative.start.row == base[i].start.row && negative.start.column < base[i].start.column)) {
+					for (var j = 1; j < baseStr.length; j++) {
+						console.log('base\n'+baseStr.substr(0, j))
+						console.log('nega\n'+negativeStr.substr(negativeStr.length - j))
+						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - j)) continue;
+						len = j;
+						start = negativeStr.length - j;
+						end = -j;
+					}
+				} else {
+					for (var j = 1; j < baseStr.length; j++) {
+						console.log('base\n'+baseStr.substr(baseStr.length - j))
+						console.log('nega\n'+negativeStr.substr(0, j))
+						if(baseStr.substr(baseStr.length - j) != negativeStr.substr(0, j)) continue;
+						len = j; 
+						start = j - baseStr.length;
 						end = j;
 					};
 
-					for (var j = len; j < baseStr.length; j++) {
-						if (baseStr.substr(0, j) != negativeStr.substr(negativeStr.length - (j + 1))) continue;
+					for (var j = 1; j < baseStr.length; j++) {
+						console.log('base\n'+baseStr.substr(0, j))
+						console.log('nega\n'+negativeStr.substr(negativeStr.length - j))
+						if (baseStr.substr(0, j != negativeStr.substr(negativeStr.length - j))) continue;
 						len = j;
-						start = negativeStr.length - (j + 1);
+						start = negativeStr.length - j;
 						end = -j;
 					}
 				}
@@ -408,19 +478,37 @@ function subtractDeltas(base, negative) {
 
 				if (start < 0) {
 					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+				
+					if (end < 0) {
+						endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+						endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)-1)+1);
+					} else {
+						endRow = (baseStr.substr(0, baseStr.length - 1).match(/\n/g) || []).length;
+						endColumn = len - (negativeStr.lastIndexOf('\n', len-1)+1)
+						// endColumn = baseStr.length - (baseStr.lastIndexOf('\n')+1);
+					}
 				} else {
 					startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+				
+					if (end > 0) {
+						endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+						endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)-1)+1);
+					} else {
+						endRow = (negativeStr.substr(0, negativeStr.length - 1).match(/\n/g) || []).length;
+						endColumn = len - (baseStr.lastIndexOf('\n', len-1)+1)
+						// endColumn = negativeStr.length - (negativeStr.lastIndexOf('\n')+1);
+					}
 				}
 
-				if (end < 0) {
-					endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
-					endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
-				} else{
-					endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
-					endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)) + 1) + ((endRow == startRow)? startColumn : 0);
-				}
+				// if (end < 0) {
+				// 	endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+				// 	endColumn = Math.abs(end) - (baseStr.lastIndexOf('\n', Math.abs(end)-1) + 1)// + ((endRow == startRow)? startColumn : 0);
+				// } else {
+				// 	endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
+				// 	endColumn = Math.abs(end) - (negativeStr.lastIndexOf('\n', Math.abs(end)-1) + 1)// + ((endRow == startRow)? startColumn : 0);
+				// }
 
 				console.log('startRow: '+startRow+' startColumn: '+startColumn);
 				console.log('endRow: '+endRow+' endColumn: '+endColumn);
@@ -439,13 +527,13 @@ function subtractDeltas(base, negative) {
 					console.log('baseRow: '+base[i].start.row)
 					set[1].start.row = startRow + base[i].start.row;
 					set[1].end.row = endRow + base[i].start.row;
-					set[1].start.column = startColumn + ((zerolength == 1)? set[0].end.column : 0);
+					set[1].start.column = startColumn + ((zerolength == 0)? set[0].end.column : 0);
 					set[1].end.column = endColumn;
 					set[1].lines = negative.lines;
 					onelength = set[1].lines.length - 1;
 
 					set[2].start.row = endRow + base[i].start.row;
-					set[2].start.column = endColumn + ((onelength == 1 && zerolength == 1)? set[0].start.column : 0);
+					set[2].start.column = endColumn + ((onelength == 0 && zerolength == 0)? set[0].start.column : 0);
 					set[2].lines.splice(0, zerolength + onelength);
 					set[2].lines[0] = set[2].lines[0].substr(set[1].lines[onelength].length);
 
@@ -456,6 +544,7 @@ function subtractDeltas(base, negative) {
 					negative.lines = [];
 					negative.end.row = negative.start.row;
 					negative.end.column = negative.start.column;
+					i+= 2;
 				} else if (start < 0) {
 					console.log('r4.2');
 					set = JSON.parse(JSON.stringify([base[i], base[i]]));
@@ -467,7 +556,7 @@ function subtractDeltas(base, negative) {
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, startColumn);
 
 					set[1].start.row = startRow + base[i].start.row;
-					set[1].start.column = startColumn + ((zerolength == 1)? set[0].start.column : 0);
+					set[1].start.column = startColumn + ((zerolength == 0)? set[0].start.column : 0);
 					set[1].lines.splice(0, zerolength);
 					set[1].lines[0] = set[1].lines[0].substr(startColumn);
 
@@ -479,20 +568,28 @@ function subtractDeltas(base, negative) {
 					negative.start.column = set[1].end.column;
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
+					i++
 				} else if (end < 0) {
 					console.log('r4.3');
 					set = JSON.parse(JSON.stringify([base[i], base[i]]));
 
-					set[0].start.row = startRow + negative.start.row;
-					set[0].end.row = endRow + negative.start.row;
-					set[0].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
-					set[0].end.column = endColumn + ((endRow == 0)? negative.start.column : 0);
+					set[0].start.row = negative.start.row;
+					set[0].end.row = negative.start.row + endRow - startRow;
+					set[0].start.column = negative.start.column;
+					set[0].end.column = endColumn + ((endRow == startRow)? negative.start.column : 0);
+					// set[0].start.row = startRow + negative.start.row;
+					// set[0].end.row = endRow + negative.start.row;
+					// set[0].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
+					// set[0].end.column = endColumn + ((endRow == 0)? negative.start.column : 0);
 					set[0].lines.splice(endRow + 1 - startRow);
+					console.log(set[0].lines);
 					zerolength = set[0].lines.length - 1;
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, endColumn)
 
-					set[1].start.row = startRow + negative.start.row;
-					set[1].start.column = startColumn + ((endRow == 0)? negative.start.column : 0);
+					set[1].start.row = set[0].end.row;
+					set[1].end.row = set[0].end.row + set[1].lines.length - endRow;
+					set[1].start.column = set[0].end.column;
+					set[1].end.column = set[1].lines[set[1].lines.length-1].length + ((set[1].lines.length - zerolength == 1)? set[0].end.column : 0); 
 					set[1].lines.splice(0, endRow - startRow);
 					set[1].lines[0] = set[1].lines[0].substr(endColumn);
 
@@ -504,33 +601,34 @@ function subtractDeltas(base, negative) {
 					negative.end.column = set[0].start.column;
 					negative.lines.splice(startRow+1);
 					neglength = negative.lines.length - 1;
-					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn); 
+					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn);
+					i++; 
 				} else {
 					console.log('r4.4');
-					base[i].start.row = negative.start.row + startRow;
-					base[i].start.column = startColumn + ((startRow == 0)? negative.start.column : 0);
-					base[i].end.row = negative.start.row + endRow;
-					base[i].end.column = endColumn + ((endRow - startRow == 0)? negative.start.column : 0);
+					base[i].start.row = negative.start.row;
+					base[i].start.column = negative.start.column;
+					base[i].end.row = negative.start.row + endRow - startRow;
+					base[i].end.column = base[i].lines[base[i].lines.length-1].length + ((base[i].lines.length == 1)? base[i].start.column : 0);
 
 					base[i].undone = true;
 
-					neg2 = JSON.parse(JSON.stringify(negative));
-					neg2.end.row = neg2.start.row + startRow;
-					neg2.end.column = startColumn + ((startRow == 0)? neg2.start.column : 0);
-					neg2.lines.splice(startRow + 1);
-					neg2.lines[startRow] = neg2.lines[startRow].substr(0, startColumn);
+					// neg2 = JSON.parse(JSON.stringify(negative));
+					// neg2.end.row = neg2.start.row + startRow;
+					// neg2.end.column = startColumn + ((startRow == 0)? neg2.start.column : 0);
+					// neg2.lines.splice(startRow + 1);
+					// neg2.lines[startRow] = neg2.lines[startRow].substr(0, startColumn);
 
-					base2 = [];
-					for (var j = i + 1; j < base.length; j++) base2.push(base[j]);
+					// base2 = [];
+					// for (var j = i + 1; j < base.length; j++) base2.push(base[j]);
 
-					console.log('level down');
-					subtractDeltas(base2, neg2);
-					console.log('level up');
+					// console.log('level down');
+					// subtractDeltas(base2, neg2);
+					// console.log('level up');
 
-					negative.start.row = neg2.end.row;
-					negative.start.column = neg2.end.column;
-					negative.lines.splice(0, endRow - startRow);
-					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
+					// negative.start.row = neg2.end.row;
+					// negative.start.column = neg2.end.column;
+					// negative.lines.splice(0, endRow - startRow);
+					// negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow - startRow == 0)? startColumn : 0));
 				}				
 
 			// 	console.log('r4')
@@ -674,7 +772,6 @@ var ChangeSelectUpdate = function(ranges, path) {
 }
 
 $(document).ready(function() {
-	console.log(document.location.pathname);
 	var editor = ace.edit('editor');
 	editor.setTheme("ace/theme/idle_fingers");
 
