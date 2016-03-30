@@ -28,6 +28,7 @@ function subtractDeltas(base, negative) {
 		console.log(JSON.stringify(negative))
 
 		if (negative.lines.length == 0) break;
+		if (negative.lines.length == 1 && negative.lines[0] == '') break;
 
 		if (negative.action == 'insert') {
 			if (negative.start.row < base[i].start.row) {
@@ -180,7 +181,7 @@ function subtractDeltas(base, negative) {
 
 				if (start < 0) {
 					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+					startColumn = Math.abs(start) - ((start == 0)? 0 : (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1))// + ((startRow == 0)? base[i].start.column : 0);		
 				
 					if (end < 0) {
 						endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
@@ -192,7 +193,7 @@ function subtractDeltas(base, negative) {
 					}
 				} else {
 					startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+					startColumn = Math.abs(start) - ((start == 0)? 0 : (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1));// + ((startRow == 0)? negative.start.column : 0);		
 				
 					if (end > 0) {
 						endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
@@ -280,8 +281,8 @@ function subtractDeltas(base, negative) {
 
 					base.splice.apply(base, [i, 1].concat(set));
 
-					negative.start.row = set[1].end.row;
-					negative.start.column = set[1].end.column;
+					negative.start.row = endRow + base[0].start.row;
+					negative.start.column = endColumn + ((endRow == 0)? base[0].start.column : 0);
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow == startRow)? startColumn : 0));
 					i += (set.length - 1);
@@ -310,8 +311,8 @@ function subtractDeltas(base, negative) {
 
 					base.splice.apply(base, [i, 1].concat(set));
 
-					negative.end.row = set[0].start.row;
-					negative.end.column = set[0].start.column;
+					negative.end.row = endRow + negative.start.row;
+					negative.end.column = endColumn + ((endRow == 0)? negative.start.column : 0);
 					negative.lines.splice(startRow+1);
 					neglength = negative.lines.length - 1;
 					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn); 
@@ -558,7 +559,7 @@ function subtractDeltas(base, negative) {
 
 				if (start < 0) {
 					startRow = (baseStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? base[i].start.column : 0);		
+					startColumn = Math.abs(start) - ((start == 0)? 0 : (baseStr.lastIndexOf('\n', Math.abs(start)-1) + 1))// + ((startRow == 0)? base[i].start.column : 0);		
 				
 					if (end < 0) {
 						endRow = (baseStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
@@ -570,7 +571,7 @@ function subtractDeltas(base, negative) {
 					}
 				} else {
 					startRow = (negativeStr.substr(0, Math.abs(start)).match(/\n/g) || []).length;
-					startColumn = Math.abs(start) - (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1)// + ((startRow == 0)? negative.start.column : 0);		
+					startColumn = Math.abs(start) - ((start == 0)? 0 : (negativeStr.lastIndexOf('\n', Math.abs(start)-1) + 1))// + ((startRow == 0)? negative.start.column : 0);		
 				
 					if (end > 0) {
 						endRow = (negativeStr.substr(0, Math.abs(end)).match(/\n/g) || []).length;
@@ -655,8 +656,8 @@ function subtractDeltas(base, negative) {
 
 					base.splice.apply(base, [i, 1].concat(set));
 
-					negative.start.row = set[1].end.row;
-					negative.start.column = set[1].end.column;
+					negative.start.row = endRow + base[0].start.row;
+					negative.start.column = endColumn + ((endRow == 0)? base[0].start.column : 0);
 					negative.lines.splice(0, endRow - startRow);
 					negative.lines[0] = negative.lines[0].substr(endColumn - ((endRow == startRow)? startColumn : 0));
 					i += (set.length - 1);
@@ -678,11 +679,13 @@ function subtractDeltas(base, negative) {
 					set[0].lines[zerolength] = set[0].lines[zerolength].substr(0, endColumn)
 
 					set[1].start.row = set[0].end.row;
-					set[1].end.row = set[0].end.row + set[1].lines.length - endRow;
+					//set[1].end.row = set[0].end.row + set[1].lines.length - endRow;
 					set[1].start.column = set[0].end.column;
-					set[1].end.column = set[1].lines[set[1].lines.length-1].length + ((set[1].lines.length - zerolength == 1)? set[0].end.column : 0); 
+					//set[1].end.column = set[1].lines[set[1].lines.length-1].length + ((set[1].lines.length - zerolength == 1)? set[0].end.column : 0);
 					set[1].lines.splice(0, endRow - startRow);
 					set[1].lines[0] = set[1].lines[0].substr(endColumn);
+					set[1].end.row = set[0].end.row + set[1].lines.length - 1;
+					set[1].end.column = set[1].lines[set[1].lines.length-1].length + ((set[1].lines.length - zerolength == 1)? set[0].end.column : 0);
 
 					for (var j = set.length - 1; j >= 0; j--) {
 						if (set[j].lines.length == 1 && set[j].lines[0] == '') set.splice(j, 1);
@@ -692,8 +695,8 @@ function subtractDeltas(base, negative) {
 
 					base.splice.apply(base, [i, 1].concat(set));
 
-					negative.end.row = set[0].start.row;
-					negative.end.column = set[0].start.column;
+					negative.end.row = negative.start.row + endRow - startRow;
+					negative.end.column = endColumn + ((endRow == 0)? negative.start.column : 0);
 					negative.lines.splice(startRow+1);
 					neglength = negative.lines.length - 1;
 					negative.lines[neglength] = negative.lines[neglength].substr(0,startColumn);
@@ -885,19 +888,55 @@ $(document).ready(function() {
 			console.log(JSON.stringify(delta.delta))
 		}
 
-		for (var i = 0; i < delta.delta.length; i++) {
-			if (delta.delta[i].undone) {
-				delta.delta.splice(i, 1);
-				i--;
-			} else delta.delta[i].action = (delta.delta[i].action == 'insert') ? 'remove' : 'insert';
+		if (delta.delta[0].action == 'remove') {
+			for (var i = 0; i < delta.delta.length; i++) {
+				delta.delta[i].action = 'insert';
+
+				if (delta.delta[i].undone && i < delta.delta.length - 1) {
+					var neg = delta.delta.splice(i, 1)[0];
+					var subbase = delta.delta.splice(i, delta.delta.length - i);
+
+					delta.delta.concat(subtractDeltas(subbase, neg));
+				}
+
+				console.log('applying[i]: ' + JSON.stringify(delta.delta))
+				preUpdateFlag = true;
+				preUndoRedoFlag = true;
+				editor.session.getDocument().applyDeltas([delta.delta[i]]);
+			}
+		} else if (delta.delta[0].action == 'insert') {
+			for (var i = 0; i < delta.delta.length; i++) {
+				delta.delta[i].action = 'remove';
+
+				if (delta.delta[i].undone && i < delta.delta.length - 1) {
+					var neg = delta.delta.splice(i, 1)[0];
+					var subbase = delta.delta.splice(i, delta.delta.length - i);
+
+					delta.delta.concat(subtractDeltas(subbase, neg));
+				}
+			}
+
+			for (var i = delta.delta.length - 1; i >= 0; i--) {
+				console.log('applying[i]: ' + JSON.stringify(delta.delta))
+				preUpdateFlag = true;
+				preUndoRedoFlag = true;
+				editor.session.getDocument().applyDeltas([delta.delta[i]]);
+			}
 		}
 
-		for (var i = delta.delta.length - 1; i > -1; i--) {
-			console.log('applying[i]: ' + JSON.stringify(delta.delta))
-			preUpdateFlag = true;
-			preUndoRedoFlag = true;
-			editor.session.getDocument().applyDeltas([delta.delta[i]]);
-		}
+		// for (var i = 0; i < delta.delta.length; i++) {
+		// 	if (delta.delta[i].undone) {
+		// 		delta.delta.splice(i, 1);
+		// 		i--;
+		// 	} else delta.delta[i].action = (delta.delta[i].action == 'insert') ? 'remove' : 'insert';
+		// }
+
+		// for (var i = delta.delta.length - 1; i > -1; i--) {
+		// 	console.log('applying[i]: ' + JSON.stringify(delta.delta))
+		// 	preUpdateFlag = true;
+		// 	preUndoRedoFlag = true;
+		// 	editor.session.getDocument().applyDeltas([delta.delta[i]]);
+		// }
 
 		userDeltas[historyPointer + 1].pointer = deltas.length - 1;
 	}
@@ -909,7 +948,7 @@ $(document).ready(function() {
 		else historyPointer++;
 
 		delta = JSON.parse(JSON.stringify(userDeltas[historyPointer]));
-		console.log('delta:' + JSON.stringify(delta));
+		console.log('delta:' + JSON.stringify(deltas));
 
 		for (i = 1 + delta.pointer; i < deltas.length; i++) {
 			//console.log(JSON.stringify(deltas[i]))
@@ -917,19 +956,51 @@ $(document).ready(function() {
 			delta.delta = subtractDeltas(delta.delta, JSON.parse(JSON.stringify(deltas[i])));
 		}
 
-		for (var i = 0; i < delta.delta.length; i++) {
-			if (delta.delta[i].undone) {
-				// delta.delta.splice(i, 1);
-				// i--;
-				delta.delta[i].undone = undefined;
-			}
-		}
+		// for (var i = 0; i < delta.delta.length; i++) {
+		// 	if (delta.delta[i].undone) {
+		// 		// delta.delta.splice(i, 1);
+		// 		// i--;
+		// 		delta.delta[i].undone = undefined;
+		// 	}
+		// }
 
-		for (var i = 0; i < delta.delta.length; i++) {
-			console.log('applying[i]: ' + JSON.stringify(delta.delta))
-			preUpdateFlag = true;
-			preUndoRedoFlag = true;
-			editor.session.getDocument().applyDeltas([delta.delta[i]]);
+		// for (var i = delta.delta.length - 1; i > -1; i--) {
+		// 	console.log('applying[i]: ' + JSON.stringify(delta.delta))
+		// 	preUpdateFlag = true;
+		// 	preUndoRedoFlag = true;
+		// 	editor.session.getDocument().applyDeltas([delta.delta[i]]);
+		// }
+
+		if (delta.delta[0].action == 'insert') {
+			for (var i = 0; i < delta.delta.length; i++) {
+				if (delta.delta[i].undone && i < delta.delta.length - 1) {
+					var neg = delta.delta.splice(i, 1)[0];
+					var subbase = delta.delta.splice(i, delta.delta.length - i);
+
+					delta.delta.concat(subtractDeltas(subbase, neg));
+				}
+
+				console.log('applying[i]: ' + JSON.stringify(delta.delta))
+				preUpdateFlag = true;
+				preUndoRedoFlag = true;
+				editor.session.getDocument().applyDeltas([delta.delta[i]]);
+			}
+		} else if (delta.delta[0].action == 'remove') {
+			for (var i = 0; i < delta.delta.length; i++) {
+				if (delta.delta[i].undone && i < delta.delta.length - 1) {
+					var neg = delta.delta.splice(i, 1)[0];
+					var subbase = delta.delta.splice(i, delta.delta.length - i);
+
+					delta.delta.concat(subtractDeltas(subbase, neg));
+				}
+			}
+
+			for (var i = delta.delta.length - 1; i >= 0; i--) {
+				console.log('applying[i]: ' + JSON.stringify(delta.delta))
+				preUpdateFlag = true;
+				preUndoRedoFlag = true;
+				editor.session.getDocument().applyDeltas([delta.delta[i]]);
+			}
 		}
 
 		userDeltas[historyPointer].pointer = deltas.length - 1;
