@@ -182,7 +182,7 @@ io.on('connection', function(socket) {
 http.listen(3000, '0.0.0.0', function() {
 	var addr = GetAddress();
 
-	if (address) console.log('listening to '+GetAddress()+':3000');
+	if (addr) console.log('listening to '+addr+':3000');
 	else {
 		console.log ('ERROR: no external IPv4 address found!');
 		process.exit();
