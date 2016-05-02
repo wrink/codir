@@ -20,6 +20,21 @@ var NewPageUpdate = function(text, path) {
 	this.cursors = cursors[path];
 }
 
+var GetAddress = function() {
+	var os = require('os');
+	var ifaces = os.networkInterfaces()
+
+	for (i in ifaces) {
+		for (j in ifaces[i]) {
+			if (ifaces[i][j].family === 'IPv4' && ifaces[i][j].internal === false) {
+				return ifaces[i][j].address;
+			} 
+		}
+	}
+
+	return false;
+}
+
 app.use(express.static(__dirname));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -164,6 +179,12 @@ io.on('connection', function(socket) {
 	});	
 });
 
-http.listen(3000, function() {
-	console.log('listening on *:3000');
+http.listen(3000, '0.0.0.0', function() {
+	var addr = GetAddress();
+
+	if (address) console.log('listening to '+GetAddress()+':3000');
+	else {
+		console.log ('ERROR: no external IPv4 address found!');
+		process.exit();
+	}
 });
