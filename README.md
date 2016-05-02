@@ -1,7 +1,3 @@
-###############################################################################
-NOTE: For best results, run in the Marvin Center. SEH's WiFi blocks conncetions
-###############################################################################
-
 CoDir Web
 Instructions:
 1: run "node index.js"
