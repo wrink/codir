@@ -1,0 +1,374 @@
+                     "23": "\n"
+                  },
+                  "removals": {},
+                  "pointer": 26
+               },
+               {
+                  "additions": {
+                     "24": "Y"
+                  },
+                  "removals": {},
+                  "pointer": 27
+               },
+               {
+                  "additions": {
+                     "25": "o"
+                  },
+                  "removals": {},
+                  "pointer": 28
+               },
+               {
+                  "additions": {
+                     "26": "u"
+                  },
+                  "removals": {},
+                  "pointer": 29
+               },
+               {
+                  "additions": {
+                     "27": "r"
+                  },
+                  "removals": {},
+                  "pointer": 30
+               },
+               {
+                  "additions": {
+                     "28": " "
+                  },
+                  "removals": {},
+                  "pointer": 31
+               },
+               {
+                  "additions": {
+                     "29": "L"
+                  },
+                  "removals": {},
+                  "pointer": 32
+               },
+               {
+                  "additions": {
+                     "30": "o"
+                  },
+                  "removals": {},
+                  "pointer": 33
+               },
+               {
+                  "additions": {
+                     "31": "r"
+                  },
+                  "removals": {},
+                  "pointer": 34
+               },
+               {
+                  "additions": {
+                     "32": "d"
+                  },
+                  "removals": {},
+                  "pointer": 35
+               },
+               {
+                  "additions": {
+                     "33": " "
+                  },
+                  "removals": {},
+                  "pointer": 36
+               },
+               {
+                  "additions": {
+                     "34": "a"
+                  },
+                  "removals": {},
+                  "pointer": 37
+               },
+               {
+                  "additions": {
+                     "35": "n"
+                  },
+                  "removals": {},
+                  "pointer": 38
+               },
+               {
+                  "additions": {
+                     "36": "d"
+                  },
+                  "removals": {},
+                  "pointer": 39
+               },
+               {
+                  "additions": {
+                     "37": " "
+                  },
+                  "removals": {},
+                  "pointer": 40
+               },
+               {
+                  "additions": {
+                     "38": "M"
+                  },
+                  "removals": {},
+                  "pointer": 41
+               },
+               {
+                  "additions": {
+                     "39": "a"
+                  },
+                  "removals": {},
+                  "pointer": 42
+               },
+               {
+                  "additions": {
+                     "40": "s"
+                  },
+                  "removals": {},
+                  "pointer": 43
+               },
+               {
+                  "additions": {
+                     "41": "t"
+                  },
+                  "removals": {},
+                  "pointer": 44
+               },
+               {
+                  "additions": {
+                     "42": "e"
+                  },
+                  "removals": {},
+                  "pointer": 45
+               },
+               {
+                  "additions": {
+                     "43": "r"
+                  },
+                  "removals": {},
+                  "pointer": 46
+               },
+               {
+                  "additions": {
+                     "0": "/"
+                  },
+                  "removals": {},
+                  "pointer": 47
+               },
+               {
+                  "additions": {
+                     "0": "/"
+                  },
+                  "removals": {},
+                  "pointer": 48
+               },
+               {
+                  "additions": {
+                     "13": "/"
+                  },
+                  "removals": {},
+                  "pointer": 49
+               },
+               {
+                  "additions": {
+                     "13": "/"
+                  },
+                  "removals": {},
+                  "pointer": 50
+               },
+               {
+                  "additions": {
+                     "28": "/"
+                  },
+                  "removals": {},
+                  "pointer": 51
+               },
+               {
+                  "additions": {
+                     "28": "/"
+                  },
+                  "removals": {},
+                  "pointer": 52
+               },
+               {
+                  "additions": {
+                     "50": "\n"
+                  },
+                  "removals": {},
+                  "pointer": 53
+               },
+               {
+                  "additions": {
+                     "50": "\n"
+                  },
+                  "removals": {},
+                  "pointer": 54
+               },
+               {
+                  "additions": {
+                     "51": "/"
+                  },
+                  "removals": {},
+                  "pointer": 55
+               },
+               {
+                  "additions": {
+                     "51": "/"
+                  },
+                  "removals": {},
+                  "pointer": 56
+               },
+               {
+                  "additions": {
+                     "53": "f"
+                  },
+                  "removals": {},
+                  "pointer": 57
+               },
+               {
+                  "additions": {
+                     "54": "t"
+                  },
+                  "removals": {},
+                  "pointer": 58
+               },
+               {
+                  "additions": {
+                     "55": "f"
+                  },
+                  "removals": {},
+                  "pointer": 59
+               },
+               {
+                  "additions": {
+                     "56": "y"
+                  },
+                  "removals": {},
+                  "pointer": 60
+               },
+               {
+                  "additions": {},
+                  "removals": {
+                     "0": "/",
+                     "1": "/",
+                     "2": "W",
+                     "3": "r",
+                     "4": "i",
+                     "5": "t",
+                     "6": "t",
+                     "7": "e",
+                     "8": "n",
+                     "9": " ",
+                     "10": "B",
+                     "11": "y",
+                     "12": "\n",
+                     "13": "/",
+                     "14": "/",
+                     "15": "D",
+                     "16": "a",
+                     "17": "v",
+                     "18": "i",
+                     "19": "d",
+                     "20": " ",
+                     "21": "W",
+                     "22": "i",
+                     "23": "k",
+                     "24": "l",
+                     "25": "e",
+                     "26": "r",
+                     "27": "\n",
+                     "28": "/",
+                     "29": "/",
+                     "30": "Y",
+                     "31": "o",
+                     "32": "u",
+                     "33": "r",
+                     "34": " ",
+                     "35": "L",
+                     "36": "o",
+                     "37": "r",
+                     "38": "d",
+                     "39": " ",
+                     "40": "a",
+                     "41": "n",
+                     "42": "d",
+                     "43": " ",
+                     "44": "M",
+                     "45": "a",
+                     "46": "s",
+                     "47": "t",
+                     "48": "e",
+                     "49": "r",
+                     "50": "\n",
+                     "51": "/",
+                     "52": "/",
+                     "53": "f",
+                     "54": "t",
+                     "55": "f",
+                     "56": "y"
+                  },
+                  "pointer": 61
+               },
+               {
+                  "additions": {},
+                  "removals": {
+                     "0": "\n"
+                  },
+                  "pointer": 62
+               },
+               {
+                  "additions": {},
+                  "removals": {
+                     "0": "\n"
+                  },
+                  "pointer": 63
+               },
+               {
+                  "additions": {},
+                  "removals": {
+                     "0": "\n"
+                  },
+                  "pointer": 64
+               }
+            ],
+            "last-change": 1459977300144
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js",
+            "deltas": [],
+            "last-change": 1459977300145
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist",
+            "deltas": [],
+            "last-change": 1459977300146
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out",
+            "deltas": [],
+            "last-change": 1459977300147
+         }
+      },
+      "redirects": {},
+      "last-change": {}
+   },
+   "128.164.227.82:8002": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1459978833977,
+            "isRoot": true
+         }
+      },
+      "files": {},
+      "redirects": {},
+      "last-change": {}
+   },
+   "128.164.227.82:3000": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1459978847921,
+            "isRoot": true
+         }
+      },
+      "files": {},
+      "redirects": {},
+      "last-change": {}
+   }
+}{}

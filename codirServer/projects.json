@@ -1,0 +1,879 @@
+{
+   "128.164.227.82:8000": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1459981369834,
+            "isRoot": true
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM",
+            "last-change": 1459981369857,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents",
+            "last-change": 1459981369862,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources",
+            "last-change": 1459981369868,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF",
+            "last-change": 1459981369870,
+            "isRoot": false
+         }
+      },
+      "files": {
+         "/Users/david/Desktop/hw4-dew/.DS_Store": {
+            "filepath": "/Users/david/Desktop/hw4-dew/.DS_Store",
+            "deltas": [],
+            "last-change": 1459981369854
+         },
+         "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin": {
+            "filepath": "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin",
+            "deltas": [],
+            "last-change": 1459981369855
+         },
+         "/Users/david/Desktop/hw4-dew/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out",
+            "deltas": [],
+            "last-change": 1459981369856
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c",
+            "deltas": [],
+            "last-change": 1459981369859
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c",
+            "deltas": [
+               {
+                  "pointer": 1,
+                  "removals": {},
+                  "additions": {
+                     "0": "\n"
+                  }
+               },
+               {
+                  "pointer": 2,
+                  "removals": {},
+                  "additions": {
+                     "0": "\n"
+                  }
+               },
+               {
+                  "pointer": 3,
+                  "removals": {},
+                  "additions": {
+                     "0": "/"
+                  }
+               },
+               {
+                  "pointer": 4,
+                  "removals": {},
+                  "additions": {
+                     "0": "/"
+                  }
+               },
+               {
+                  "pointer": 5,
+                  "removals": {},
+                  "additions": {
+                     "2": "W"
+                  }
+               },
+               {
+                  "pointer": 6,
+                  "removals": {},
+                  "additions": {
+                     "3": "r"
+                  }
+               },
+               {
+                  "pointer": 7,
+                  "removals": {},
+                  "additions": {
+                     "4": "i"
+                  }
+               },
+               {
+                  "pointer": 8,
+                  "removals": {},
+                  "additions": {
+                     "5": "t"
+                  }
+               },
+               {
+                  "pointer": 9,
+                  "removals": {},
+                  "additions": {
+                     "5": "t"
+                  }
+               },
+               {
+                  "pointer": 10,
+                  "removals": {},
+                  "additions": {
+                     "7": "e"
+                  }
+               },
+               {
+                  "pointer": 11,
+                  "removals": {},
+                  "additions": {
+                     "8": "n"
+                  }
+               },
+               {
+                  "pointer": 12,
+                  "removals": {},
+                  "additions": {
+                     "9": " "
+                  }
+               },
+               {
+                  "pointer": 13,
+                  "removals": {},
+                  "additions": {
+                     "10": "b"
+                  }
+               },
+               {
+                  "pointer": 14,
+                  "removals": {},
+                  "additions": {
+                     "11": "y"
+                  }
+               },
+               {
+                  "pointer": 15,
+                  "removals": {},
+                  "additions": {
+                     "12": " "
+                  }
+               },
+               {
+                  "pointer": 16,
+                  "removals": {},
+                  "additions": {
+                     "13": "D"
+                  }
+               },
+               {
+                  "pointer": 17,
+                  "removals": {},
+                  "additions": {
+                     "14": "a"
+                  }
+               },
+               {
+                  "pointer": 18,
+                  "removals": {},
+                  "additions": {
+                     "15": "v"
+                  }
+               },
+               {
+                  "pointer": 19,
+                  "removals": {},
+                  "additions": {
+                     "16": "i"
+                  }
+               },
+               {
+                  "pointer": 20,
+                  "removals": {},
+                  "additions": {
+                     "17": "d"
+                  }
+               },
+               {
+                  "pointer": 21,
+                  "removals": {},
+                  "additions": {
+                     "18": " "
+                  }
+               },
+               {
+                  "pointer": 22,
+                  "removals": {},
+                  "additions": {
+                     "19": "W"
+                  }
+               },
+               {
+                  "pointer": 23,
+                  "removals": {},
+                  "additions": {
+                     "20": "i"
+                  }
+               },
+               {
+                  "pointer": 24,
+                  "removals": {},
+                  "additions": {
+                     "21": "k"
+                  }
+               },
+               {
+                  "pointer": 25,
+                  "removals": {},
+                  "additions": {
+                     "22": "l"
+                  }
+               },
+               {
+                  "pointer": 26,
+                  "removals": {},
+                  "additions": {
+                     "23": "e"
+                  }
+               },
+               {
+                  "pointer": 27,
+                  "removals": {},
+                  "additions": {
+                     "24": "r"
+                  }
+               },
+               {
+                  "pointer": 28,
+                  "removals": {},
+                  "additions": {
+                     "25": "\n"
+                  }
+               },
+               {
+                  "pointer": 29,
+                  "removals": {},
+                  "additions": {
+                     "25": "\n"
+                  }
+               },
+               {
+                  "pointer": 30,
+                  "removals": {},
+                  "additions": {
+                     "26": "/"
+                  }
+               },
+               {
+                  "pointer": 31,
+                  "removals": {},
+                  "additions": {
+                     "26": "/"
+                  }
+               },
+               {
+                  "pointer": 32,
+                  "removals": {},
+                  "additions": {
+                     "28": "A"
+                  }
+               },
+               {
+                  "pointer": 33,
+                  "removals": {},
+                  "additions": {
+                     "29": "n"
+                  }
+               },
+               {
+                  "pointer": 34,
+                  "removals": {},
+                  "additions": {
+                     "30": "d"
+                  }
+               },
+               {
+                  "pointer": 35,
+                  "removals": {},
+                  "additions": {
+                     "31": " "
+                  }
+               },
+               {
+                  "pointer": 36,
+                  "removals": {},
+                  "additions": {
+                     "32": "t"
+                  }
+               },
+               {
+                  "pointer": 37,
+                  "removals": {},
+                  "additions": {
+                     "33": "h"
+                  }
+               },
+               {
+                  "pointer": 38,
+                  "removals": {},
+                  "additions": {
+                     "34": "e"
+                  }
+               },
+               {
+                  "pointer": 39,
+                  "removals": {},
+                  "additions": {
+                     "35": " "
+                  }
+               },
+               {
+                  "pointer": 40,
+                  "removals": {},
+                  "additions": {
+                     "36": "r"
+                  }
+               },
+               {
+                  "pointer": 41,
+                  "removals": {},
+                  "additions": {
+                     "37": "e"
+                  }
+               },
+               {
+                  "pointer": 42,
+                  "removals": {},
+                  "additions": {
+                     "38": "s"
+                  }
+               },
+               {
+                  "pointer": 43,
+                  "removals": {},
+                  "additions": {
+                     "39": "t"
+                  }
+               },
+               {
+                  "pointer": 44,
+                  "removals": {},
+                  "additions": {
+                     "40": " "
+                  }
+               },
+               {
+                  "pointer": 45,
+                  "removals": {},
+                  "additions": {
+                     "41": "o"
+                  }
+               },
+               {
+                  "pointer": 46,
+                  "removals": {},
+                  "additions": {
+                     "42": "f"
+                  }
+               },
+               {
+                  "pointer": 47,
+                  "removals": {},
+                  "additions": {
+                     "43": " "
+                  }
+               },
+               {
+                  "pointer": 48,
+                  "removals": {},
+                  "additions": {
+                     "44": "t"
+                  }
+               },
+               {
+                  "pointer": 49,
+                  "removals": {},
+                  "additions": {
+                     "45": "h"
+                  }
+               },
+               {
+                  "pointer": 50,
+                  "removals": {},
+                  "additions": {
+                     "46": "e"
+                  }
+               },
+               {
+                  "pointer": 51,
+                  "removals": {},
+                  "additions": {
+                     "47": " "
+                  }
+               },
+               {
+                  "pointer": 52,
+                  "removals": {},
+                  "additions": {
+                     "48": "c"
+                  }
+               },
+               {
+                  "pointer": 53,
+                  "removals": {},
+                  "additions": {
+                     "49": "o"
+                  }
+               },
+               {
+                  "pointer": 54,
+                  "removals": {},
+                  "additions": {
+                     "50": "d"
+                  }
+               },
+               {
+                  "pointer": 55,
+                  "removals": {},
+                  "additions": {
+                     "51": "i"
+                  }
+               },
+               {
+                  "pointer": 56,
+                  "removals": {},
+                  "additions": {
+                     "52": "r"
+                  }
+               },
+               {
+                  "pointer": 57,
+                  "removals": {},
+                  "additions": {
+                     "53": " "
+                  }
+               },
+               {
+                  "pointer": 58,
+                  "removals": {},
+                  "additions": {
+                     "54": "c"
+                  }
+               },
+               {
+                  "pointer": 59,
+                  "removals": {},
+                  "additions": {
+                     "55": "r"
+                  }
+               },
+               {
+                  "pointer": 60,
+                  "removals": {},
+                  "additions": {
+                     "56": "e"
+                  }
+               },
+               {
+                  "pointer": 61,
+                  "removals": {},
+                  "additions": {
+                     "57": "w"
+                  }
+               },
+               {
+                  "pointer": 62,
+                  "removals": {},
+                  "additions": {
+                     "58": "\n"
+                  }
+               },
+               {
+                  "pointer": 63,
+                  "removals": {},
+                  "additions": {
+                     "59": "/"
+                  }
+               },
+               {
+                  "pointer": 64,
+                  "removals": {},
+                  "additions": {
+                     "59": "/"
+                  }
+               },
+               {
+                  "pointer": 65,
+                  "removals": {},
+                  "additions": {
+                     "61": "F"
+                  }
+               },
+               {
+                  "pointer": 66,
+                  "removals": {},
+                  "additions": {
+                     "62": "T"
+                  }
+               },
+               {
+                  "pointer": 67,
+                  "removals": {},
+                  "additions": {
+                     "63": "F"
+                  }
+               },
+               {
+                  "pointer": 68,
+                  "removals": {},
+                  "additions": {
+                     "64": "Y"
+                  }
+               }
+            ],
+            "last-change": 1459981369860
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js",
+            "deltas": [],
+            "last-change": 1459981369863
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist",
+            "deltas": [],
+            "last-change": 1459981369867
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out",
+            "deltas": [],
+            "last-change": 1459981369871
+         }
+      },
+      "redirects": {},
+      "last-change": {}
+   },
+   "128.164.64.245:8000": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1462155165982,
+            "isRoot": true
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM",
+            "last-change": 1462155166114,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents",
+            "last-change": 1462155166123,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources",
+            "last-change": 1462155166128,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF",
+            "last-change": 1462155166130,
+            "isRoot": false
+         }
+      },
+      "files": {
+         "/Users/david/Desktop/hw4-dew/.DS_Store": {
+            "filepath": "/Users/david/Desktop/hw4-dew/.DS_Store",
+            "deltas": [],
+            "last-change": 1462155166110
+         },
+         "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin": {
+            "filepath": "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin",
+            "deltas": [],
+            "last-change": 1462155166112
+         },
+         "/Users/david/Desktop/hw4-dew/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out",
+            "deltas": [],
+            "last-change": 1462155166113
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c",
+            "deltas": [],
+            "last-change": 1462155166120
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c",
+            "deltas": [],
+            "last-change": 1462155166121
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js",
+            "deltas": [],
+            "last-change": 1462155166125
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist",
+            "deltas": [],
+            "last-change": 1462155166127
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out",
+            "deltas": [],
+            "last-change": 1462155166139
+         }
+      },
+      "redirects": {},
+      "last-change": {}
+   },
+   "128.164.64.245:3000": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1462165769316,
+            "isRoot": true
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM",
+            "last-change": 1462165783824,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents",
+            "last-change": 1462165783876,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources",
+            "last-change": 1462165783881,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF",
+            "last-change": 1462165783885,
+            "isRoot": false
+         }
+      },
+      "files": {
+         "/Users/david/Desktop/hw4-dew/.DS_Store": {
+            "filepath": "/Users/david/Desktop/hw4-dew/.DS_Store",
+            "deltas": [],
+            "last-change": 1462165783819
+         },
+         "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin": {
+            "filepath": "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin",
+            "deltas": [],
+            "last-change": 1462165783821
+         },
+         "/Users/david/Desktop/hw4-dew/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out",
+            "deltas": [],
+            "last-change": 1462165783822
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c",
+            "deltas": [],
+            "last-change": 1462165783873
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c",
+            "deltas": [],
+            "last-change": 1462165783874
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js",
+            "deltas": [],
+            "last-change": 1462165783878
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist",
+            "deltas": [],
+            "last-change": 1462165783880
+         },
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out",
+            "deltas": [],
+            "last-change": 1462165783886
+         }
+      },
+      "redirects": {},
+      "last-change": {}
+   },
+   "128.164.208.97:8000": {
+      "folders": {
+         "/Users/david/Desktop/hw4-dew": {
+            "filepath": "/Users/david/Desktop/hw4-dew",
+            "last-change": 1462313468678,
+            "isRoot": true
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM",
+            "last-change": 1462313468745,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents",
+            "last-change": 1462313468768,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources",
+            "last-change": 1462313468776,
+            "isRoot": false
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF",
+            "last-change": 1462313468777,
+            "isRoot": false
+         }
+      },
+      "files": {
+         "/Users/david/Desktop/hw4-dew/.DS_Store": {
+            "filepath": "/Users/david/Desktop/hw4-dew/.DS_Store",
+            "deltas": [],
+            "last-change": 1462313468739
+         },
+         "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin": {
+            "filepath": "/Users/david/Desktop/hw4-dew/BACKING_STORE.bin",
+            "deltas": [],
+            "last-change": 1462313468741
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-modified.c",
+            "deltas": [
+               {
+                  "removals": {},
+                  "additions": {
+                     "0": "\n"
+                  },
+                  "pointer": 1
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "0": "\n"
+                  },
+                  "pointer": 2
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "0": "H"
+                  },
+                  "pointer": 3
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "1": "e"
+                  },
+                  "pointer": 4
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "2": "l"
+                  },
+                  "pointer": 5
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "2": "l"
+                  },
+                  "pointer": 6
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "4": "o"
+                  },
+                  "pointer": 7
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "5": " "
+                  },
+                  "pointer": 8
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "6": "w"
+                  },
+                  "pointer": 9
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "7": "o"
+                  },
+                  "pointer": 10
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "8": "r"
+                  },
+                  "pointer": 11
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "9": "l"
+                  },
+                  "pointer": 12
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "10": "d"
+                  },
+                  "pointer": 13
+               },
+               {
+                  "removals": {},
+                  "additions": {
+                     "11": "!"
+                  },
+                  "pointer": 14
+               }
+            ],
+            "last-change": 1462313468764
+         },
+         "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c": {
+            "filepath": "/Users/david/Desktop/hw4-dew/hw4-dew-unmodified.c",
+            "deltas": [],
+            "last-change": 1462313468766
+         },
+         "/Users/david/Desktop/hw4-dew/b.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out",
+            "deltas": [],
+            "last-change": 1462313468743
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/test.js": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/test.js",
+            "deltas": [],
+            "last-change": 1462313468770
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Info.plist": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Info.plist",
+            "deltas": [],
+            "last-change": 1462313468771
+         },
+         "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF/a.out": {
+            "filepath": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF/a.out",
+            "deltas": [],
+            "last-change": 1462313468778
+         }
+      },
+      "redirects": {
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM": "/Users/david/Desktop/hw4-dew/b.out.dSYM",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF",
+         "/Users/david/Desktop/hw4-dew/a.out": "/Users/david/Desktop/hw4-dew/b.out",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/test.js": "/Users/david/Desktop/hw4-dew/b.out.dSYM/test.js",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Info.plist": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Info.plist",
+         "/Users/david/Desktop/hw4-dew/a.out.dSYM/Contents/Resources/DWARF/a.out": "/Users/david/Desktop/hw4-dew/b.out.dSYM/Contents/Resources/DWARF/a.out"
+      },
+      "last-change": {}
+   }
+}
